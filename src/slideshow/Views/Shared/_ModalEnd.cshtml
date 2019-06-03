@@ -1,0 +1,22 @@
+﻿@{
+var btn1 = ViewData["Save-Button-Label"] ?? "Save";
+var btn2 = ViewData["Close-Button-Label"] ?? "Close";
+
+
+}
+@if ("XMLHttpRequest".Equals(Context.Request.Headers["x-requested-with"].FirstOrDefault(), StringComparison.OrdinalIgnoreCase))
+{
+    @Html.Raw($@"
+
+            </div>
+
+            <div class=""modal-footer"">
+                <button type=""submit"" id=""btn-confirm"" class=""btn btn-primary btn-default"">{btn1}</button>
+                <button type=""button"" class=""btn btn-default"" data-dismiss=""modal"">{btn2}</button>
+            </div>
+
+        </div>
+
+    </div>
+    ")
+}

@@ -1,0 +1,11 @@
+﻿@{
+
+    if ("XMLHttpRequest".Equals(Context.Request.Headers["x-requested-with"].FirstOrDefault(), StringComparison.OrdinalIgnoreCase))
+    {
+        Layout = "_Empty";
+    }
+    else
+    {
+        Layout = "_Layout";
+    }
+}

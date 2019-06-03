@@ -1,0 +1,169 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+
+.field-validation-error  {
+    color: red;
+}
+
+
+
+.navbar-global {
+    background-color: indigo;
+}
+
+    .navbar-global .navbar-brand {
+        color: white;
+    }
+
+    .navbar-global .navbar-user > li > a {
+        color: white;
+    }
+
+.navbar-primary {
+    background-color: #333;
+    bottom: 0px;
+    left: 0px;
+    position: absolute;
+    top: 51px;
+    width: 200px;
+    z-index: 8;
+    overflow: hidden;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+
+    .navbar-primary.collapsed {
+        width: 60px;
+    }
+
+        .navbar-primary.collapsed .glyphicon {
+            font-size: 22px;
+        }
+
+        .navbar-primary.collapsed .nav-label {
+            display: none;
+        }
+
+.btn-expand-collapse {
+    position: absolute;
+    display: block;
+    left: 0px;
+    bottom: 0;
+    width: 100%;
+    padding: 8px 0;
+    border-top: solid 1px #666;
+    color: grey;
+    font-size: 20px;
+    text-align: center;
+}
+
+    .btn-expand-collapse:hover,
+    .btn-expand-collapse:focus {
+        background-color: #222;
+        color: white;
+    }
+
+    .btn-expand-collapse:active {
+        background-color: #111;
+    }
+
+
+/* https://codepen.io/nirmalkc/pen/JKjmVg */
+.navbar-primary-menu,
+.navbar-primary-menu li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+    .navbar-primary-menu li a {
+        display: block;
+        padding: 10px 18px;
+        text-align: left;
+        border-bottom: solid 1px #444;
+        color: #ccc;
+    }
+
+        .navbar-primary-menu li a:hover {
+            background-color: #000;
+            text-decoration: none;
+            color: white;
+        }
+
+        .navbar-primary-menu li .active {
+            background-color: #000;
+            text-decoration: none;
+            color: white;
+        }
+
+        .navbar-primary-menu li a .glyphicon {
+            margin-right: 6px;
+        }
+
+        .navbar-primary-menu li a:hover .glyphicon {
+            color: orchid;
+        }
+
+@media screen and (max-width: 820px) {
+    /* Hide captions */
+    .navbar-title {
+        display: none;
+    }
+}
+
+.main-content {
+    margin-top: 10px;
+    margin-left: 200px;
+    padding: 20px;
+}
+
+.collapsed + .main-content {
+    margin-left: 60px;
+}
+
+pre {
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+.slideshow-content {
+    font-size: large;  
+}
+
+    

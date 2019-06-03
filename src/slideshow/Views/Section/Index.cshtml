@@ -1,0 +1,34 @@
+﻿@model PagedModel<SectionViewModel>
+
+@{
+    ViewData["Title"] = "Sections";
+}
+
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
+
+<table id="section-grid" class="table table-condensed table-hover table-striped">
+    <thead>
+        <tr>
+            <th data-column-id="id" data-width="10%" data-identifier="true" data-type="numeric">Id</th>
+            <th data-column-id="name" data-width="auto" data-order="asc">Name</th>
+            <th data-column-id="class" data-width="auto" data-order="asc">Class</th>
+            <th data-column-id="order" data-width="auto" data-order="asc">Order</th>
+            <th data-column-id="commands" data-width="13%" data-formatter="commands" data-sortable="false" data-align="right">Actions</th>
+        </tr>
+    </thead>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="modal-dialog-container" role="dialog"></div>
+
+<!-- loader -->
+<div id="loader" class="loadersmall"></div>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/loader.css" />
+}
+
+@section Scripts {
+    <script src="~/js/grid.js"></script>
+}

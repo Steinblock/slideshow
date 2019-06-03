@@ -1,0 +1,875 @@
+SF:d:\vortrag\slideshow\src\slideshow.web\UserManager.cs
+FN:33,System.Collections.Generic.IEnumerable`1<System.Security.Claims.Claim> slideshow.web.UserManager::GetUserClaims(slideshow.web.Models.LogInViewModel)
+FNDA:0,System.Collections.Generic.IEnumerable`1<System.Security.Claims.Claim> slideshow.web.UserManager::GetUserClaims(slideshow.web.Models.LogInViewModel)
+DA:34,0
+DA:35,0
+DA:37,0
+DA:38,0
+DA:39,0
+DA:40,0
+DA:41,0
+DA:42,0
+FN:44,System.Collections.Generic.IEnumerable`1<System.Security.Claims.Claim> slideshow.web.UserManager::GetRoleClaims(slideshow.web.Models.LogInViewModel)
+FNDA:0,System.Collections.Generic.IEnumerable`1<System.Security.Claims.Claim> slideshow.web.UserManager::GetRoleClaims(slideshow.web.Models.LogInViewModel)
+DA:45,0
+DA:46,0
+DA:47,0
+DA:48,0
+DA:49,0
+FN:13,System.Void slideshow.web.UserManager::.ctor()
+FNDA:0,System.Void slideshow.web.UserManager::.ctor()
+DA:14,0
+DA:15,0
+DA:16,0
+FN:18,System.Void slideshow.web.UserManager/<SignInAsync>d__1::MoveNext()
+FNDA:0,System.Void slideshow.web.UserManager/<SignInAsync>d__1::MoveNext()
+DA:19,0
+DA:21,0
+DA:22,0
+DA:24,0
+DA:26,0
+BRDA:24,98,0,0
+BRDA:24,98,1,0
+FN:28,System.Void slideshow.web.UserManager/<SignOutAsync>d__2::MoveNext()
+FNDA:0,System.Void slideshow.web.UserManager/<SignOutAsync>d__2::MoveNext()
+DA:29,0
+DA:30,0
+DA:31,0
+BRDA:30,37,0,0
+BRDA:30,37,1,0
+LF:24
+LH:0
+BRF:4
+BRH:0
+FNF:5
+FNH:0
+end_of_record
+SF:d:\vortrag\slideshow\src\slideshow.web\Models\ErrorViewModel.cs
+FN:6,System.String slideshow.web.Models.ErrorViewModel::get_RequestId()
+FNDA:0,System.String slideshow.web.Models.ErrorViewModel::get_RequestId()
+DA:7,0
+FN:8,System.Boolean slideshow.web.Models.ErrorViewModel::get_ShowRequestId()
+FNDA:0,System.Boolean slideshow.web.Models.ErrorViewModel::get_ShowRequestId()
+DA:9,0
+LF:2
+LH:0
+BRF:0
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:d:\vortrag\slideshow\src\slideshow.web\Models\FileModel.cs
+FN:4,System.String slideshow.web.Models.FileModel::get_Name()
+FNDA:0,System.String slideshow.web.Models.FileModel::get_Name()
+DA:5,0
+LF:1
+LH:0
+BRF:0
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:d:\vortrag\slideshow\src\slideshow.web\Models\LoginViewModel.cs
+FN:9,System.String slideshow.web.Models.LogInViewModel::get_Name()
+FNDA:0,System.String slideshow.web.Models.LogInViewModel::get_Name()
+DA:10,0
+FN:10,System.String slideshow.web.Models.LogInViewModel::get_Pass()
+FNDA:0,System.String slideshow.web.Models.LogInViewModel::get_Pass()
+DA:11,0
+LF:2
+LH:0
+BRF:0
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:d:\vortrag\slideshow\src\slideshow.web\Models\PagedModel.cs
+FN:9,System.Int32 slideshow.web.Models.PagedModel`1::get_current()
+FNDA:0,System.Int32 slideshow.web.Models.PagedModel`1::get_current()
+DA:10,0
+FN:10,System.Int32 slideshow.web.Models.PagedModel`1::get_rowCount()
+FNDA:0,System.Int32 slideshow.web.Models.PagedModel`1::get_rowCount()
+DA:11,0
+FN:11,System.Int32 slideshow.web.Models.PagedModel`1::get_total()
+FNDA:0,System.Int32 slideshow.web.Models.PagedModel`1::get_total()
+DA:12,0
+FN:12,System.Collections.Generic.IEnumerable`1<T> slideshow.web.Models.PagedModel`1::get_rows()
+FNDA:0,System.Collections.Generic.IEnumerable`1<T> slideshow.web.Models.PagedModel`1::get_rows()
+DA:13,0
+LF:4
+LH:0
+BRF:0
+BRH:0
+FNF:4
+FNH:0
+end_of_record
+SF:d:\vortrag\slideshow\src\slideshow.web\Models\SectionViewModel.cs
+FN:11,System.Int32 slideshow.web.Models.SectionViewModel::get_Id()
+FNDA:0,System.Int32 slideshow.web.Models.SectionViewModel::get_Id()
+DA:12,0
+FN:13,System.String slideshow.web.Models.SectionViewModel::get_Name()
+FNDA:0,System.String slideshow.web.Models.SectionViewModel::get_Name()
+DA:14,0
+FN:14,System.String slideshow.web.Models.SectionViewModel::get_Class()
+FNDA:0,System.String slideshow.web.Models.SectionViewModel::get_Class()
+DA:15,0
+FN:15,System.Int32 slideshow.web.Models.SectionViewModel::get_Order()
+FNDA:0,System.Int32 slideshow.web.Models.SectionViewModel::get_Order()
+DA:16,0
+LF:4
+LH:0
+BRF:0
+BRH:0
+FNF:4
+FNH:0
+end_of_record
+SF:d:\vortrag\slideshow\src\slideshow.web\Models\SlideViewModel.cs
+FN:11,System.Int32 slideshow.web.Models.SlideViewModel::get_Id()
+FNDA:0,System.Int32 slideshow.web.Models.SlideViewModel::get_Id()
+DA:12,0
+FN:13,System.String slideshow.web.Models.SlideViewModel::get_Name()
+FNDA:0,System.String slideshow.web.Models.SlideViewModel::get_Name()
+DA:14,0
+FN:14,System.String slideshow.web.Models.SlideViewModel::get_Header()
+FNDA:0,System.String slideshow.web.Models.SlideViewModel::get_Header()
+DA:15,0
+FN:15,System.String slideshow.web.Models.SlideViewModel::get_Template()
+FNDA:0,System.String slideshow.web.Models.SlideViewModel::get_Template()
+DA:16,0
+FN:16,System.String slideshow.web.Models.SlideViewModel::get_Content()
+FNDA:0,System.String slideshow.web.Models.SlideViewModel::get_Content()
+DA:17,0
+FN:17,System.Int32 slideshow.web.Models.SlideViewModel::get_Order()
+FNDA:0,System.Int32 slideshow.web.Models.SlideViewModel::get_Order()
+DA:18,0
+FN:18,System.Int32 slideshow.web.Models.SlideViewModel::get_SectionId()
+FNDA:0,System.Int32 slideshow.web.Models.SlideViewModel::get_SectionId()
+DA:19,0
+FN:23,slideshow.web.Models.SlideViewModel slideshow.web.Models.SlideViewModelWithNavigation::get_Prev()
+FNDA:0,slideshow.web.Models.SlideViewModel slideshow.web.Models.SlideViewModelWithNavigation::get_Prev()
+DA:24,0
+FN:24,slideshow.web.Models.SlideViewModel slideshow.web.Models.SlideViewModelWithNavigation::get_Next()
+FNDA:0,slideshow.web.Models.SlideViewModel slideshow.web.Models.SlideViewModelWithNavigation::get_Next()
+DA:25,0
+LF:9
+LH:0
+BRF:0
+BRH:0
+FNF:9
+FNH:0
+end_of_record
+SF:d:\vortrag\slideshow\src\slideshow.web\Controllers\AccountController.cs
+FN:21,Microsoft.AspNetCore.Mvc.IActionResult slideshow.web.Controllers.AccountController::Index()
+FNDA:0,Microsoft.AspNetCore.Mvc.IActionResult slideshow.web.Controllers.AccountController::Index()
+DA:22,0
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:27,0
+DA:28,0
+FN:31,Microsoft.AspNetCore.Mvc.IActionResult slideshow.web.Controllers.AccountController::LogIn()
+FNDA:0,Microsoft.AspNetCore.Mvc.IActionResult slideshow.web.Controllers.AccountController::LogIn()
+DA:32,0
+DA:33,0
+DA:34,0
+DA:35,0
+FN:14,System.Void slideshow.web.Controllers.AccountController::.ctor(slideshow.web.UserManager)
+FNDA:0,System.Void slideshow.web.Controllers.AccountController::.ctor(slideshow.web.UserManager)
+DA:15,0
+DA:16,0
+DA:17,0
+DA:18,0
+FN:38,System.Void slideshow.web.Controllers.AccountController/<LogIn>d__4::MoveNext()
+FNDA:0,System.Void slideshow.web.Controllers.AccountController/<LogIn>d__4::MoveNext()
+DA:39,0
+DA:40,0
+DA:41,0
+DA:42,0
+DA:45,0
+DA:47,0
+DA:48,0
+DA:49,0
+DA:51,0
+DA:52,0
+DA:53,0
+DA:54,0
+DA:56,0
+BRDA:40,34,0,0
+BRDA:40,34,1,0
+BRDA:42,62,0,0
+BRDA:47,103,0,0
+BRDA:47,103,1,0
+BRDA:48,163,0,0
+BRDA:42,62,1,0
+BRDA:48,163,1,0
+FN:59,System.Void slideshow.web.Controllers.AccountController/<LogOut>d__5::MoveNext()
+FNDA:0,System.Void slideshow.web.Controllers.AccountController/<LogOut>d__5::MoveNext()
+DA:60,0
+DA:61,0
+DA:62,0
+DA:63,0
+BRDA:61,53,0,0
+BRDA:61,53,1,0
+LF:32
+LH:0
+BRF:10
+BRH:0
+FNF:5
+FNH:0
+end_of_record
+SF:d:\vortrag\slideshow\src\slideshow.web\Controllers\ControllerBase.cs
+FN:13,Microsoft.AspNetCore.Mvc.IActionResult slideshow.web.Controllers.Controller::Negotiate(System.Object)
+FNDA:0,Microsoft.AspNetCore.Mvc.IActionResult slideshow.web.Controllers.Controller::Negotiate(System.Object)
+DA:14,0
+DA:15,0
+DA:16,0
+FN:18,Microsoft.AspNetCore.Mvc.IActionResult slideshow.web.Controllers.Controller::Negotiate(System.String,System.Object)
+FNDA:0,Microsoft.AspNetCore.Mvc.IActionResult slideshow.web.Controllers.Controller::Negotiate(System.String,System.Object)
+DA:19,0
+DA:20,0
+DA:21,0
+DA:22,0
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:27,0
+DA:29,0
+DA:30,0
+DA:31,0
+DA:32,0
+DA:33,0
+DA:34,0
+DA:36,0
+DA:39,0
+DA:41,0
+DA:42,0
+BRDA:20,7,0,0
+BRDA:20,7,1,0
+BRDA:23,172,1,0
+BRDA:25,80,0,0
+BRDA:25,80,1,0
+BRDA:29,97,0,0
+BRDA:29,97,1,0
+BRDA:29,118,0,0
+BRDA:32,139,0,0
+BRDA:32,139,1,0
+BRDA:29,118,1,0
+BRDA:23,172,0,0
+LF:22
+LH:0
+BRF:12
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:d:\vortrag\slideshow\src\slideshow.web\Controllers\HomeController.cs
+FN:14,Microsoft.AspNetCore.Mvc.IActionResult slideshow.web.Controllers.HomeController::Index()
+FNDA:0,Microsoft.AspNetCore.Mvc.IActionResult slideshow.web.Controllers.HomeController::Index()
+DA:15,0
+DA:16,0
+DA:17,0
+DA:18,0
+DA:19,0
+DA:20,0
+DA:21,0
+DA:22,0
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:27,0
+DA:28,0
+DA:29,0
+FN:31,Microsoft.AspNetCore.Mvc.IActionResult slideshow.web.Controllers.HomeController::About()
+FNDA:0,Microsoft.AspNetCore.Mvc.IActionResult slideshow.web.Controllers.HomeController::About()
+DA:32,0
+DA:33,0
+DA:35,0
+DA:36,0
+FN:38,Microsoft.AspNetCore.Mvc.IActionResult slideshow.web.Controllers.HomeController::Contact()
+FNDA:0,Microsoft.AspNetCore.Mvc.IActionResult slideshow.web.Controllers.HomeController::Contact()
+DA:39,0
+DA:40,0
+DA:42,0
+DA:43,0
+FN:45,Microsoft.AspNetCore.Mvc.IActionResult slideshow.web.Controllers.HomeController::Privacy()
+FNDA:0,Microsoft.AspNetCore.Mvc.IActionResult slideshow.web.Controllers.HomeController::Privacy()
+DA:46,0
+DA:47,0
+DA:48,0
+FN:51,Microsoft.AspNetCore.Mvc.IActionResult slideshow.web.Controllers.HomeController::Error()
+FNDA:0,Microsoft.AspNetCore.Mvc.IActionResult slideshow.web.Controllers.HomeController::Error()
+DA:52,0
+DA:53,0
+DA:54,0
+BRDA:53,14,0,0
+BRDA:53,14,1,0
+BRDA:53,26,0,0
+BRDA:53,26,1,0
+FN:9,System.Void slideshow.web.Controllers.HomeController::.ctor()
+FNDA:0,System.Void slideshow.web.Controllers.HomeController::.ctor()
+DA:10,0
+DA:11,0
+DA:12,0
+LF:32
+LH:0
+BRF:4
+BRH:0
+FNF:6
+FNH:0
+end_of_record
+SF:d:\vortrag\slideshow\src\slideshow.web\Controllers\SectionController.cs
+FN:19,Microsoft.AspNetCore.Mvc.IActionResult slideshow.web.Controllers.SectionController::Index(System.Int32,System.Int32,System.String)
+FNDA:0,Microsoft.AspNetCore.Mvc.IActionResult slideshow.web.Controllers.SectionController::Index(System.Int32,System.Int32,System.String)
+DA:20,0
+DA:22,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:27,0
+DA:28,0
+DA:30,0
+DA:32,0
+DA:33,0
+DA:34,0
+DA:35,0
+DA:36,0
+DA:37,0
+DA:38,0
+DA:39,0
+DA:48,0
+DA:49,0
+BRDA:24,51,0,0
+BRDA:24,51,1,0
+FN:177,slideshow.web.Models.SectionViewModel slideshow.web.Controllers.SectionController::CreateSectionViewModel(slideshow.core.Models.ISection)
+FNDA:0,slideshow.web.Models.SectionViewModel slideshow.web.Controllers.SectionController::CreateSectionViewModel(slideshow.core.Models.ISection)
+DA:178,0
+DA:179,0
+DA:180,0
+DA:181,0
+DA:182,0
+DA:183,0
+DA:184,0
+DA:185,0
+DA:186,0
+FN:13,System.Void slideshow.web.Controllers.SectionController::.ctor(slideshow.core.Repository.ISectionRepository)
+FNDA:0,System.Void slideshow.web.Controllers.SectionController::.ctor(slideshow.core.Repository.ISectionRepository)
+DA:14,0
+DA:15,0
+DA:16,0
+DA:17,0
+FN:52,System.Void slideshow.web.Controllers.SectionController/<Create>d__3::MoveNext()
+FNDA:0,System.Void slideshow.web.Controllers.SectionController/<Create>d__3::MoveNext()
+DA:53,0
+DA:54,0
+DA:55,0
+DA:56,0
+DA:57,0
+DA:58,0
+BRDA:55,69,0,0
+BRDA:55,69,1,0
+FN:61,System.Void slideshow.web.Controllers.SectionController/<View>d__4::MoveNext()
+FNDA:0,System.Void slideshow.web.Controllers.SectionController/<View>d__4::MoveNext()
+DA:62,0
+DA:63,0
+DA:64,0
+DA:65,0
+DA:66,0
+DA:67,0
+BRDA:64,75,0,0
+BRDA:64,75,1,0
+FN:70,System.Void slideshow.web.Controllers.SectionController/<Edit>d__5::MoveNext()
+FNDA:0,System.Void slideshow.web.Controllers.SectionController/<Edit>d__5::MoveNext()
+DA:71,0
+DA:72,0
+DA:73,0
+DA:74,0
+DA:75,0
+DA:76,0
+BRDA:73,75,0,0
+BRDA:73,75,1,0
+FN:82,System.Void slideshow.web.Controllers.SectionController/<Edit>d__6::MoveNext()
+FNDA:0,System.Void slideshow.web.Controllers.SectionController/<Edit>d__6::MoveNext()
+DA:83,0
+DA:84,0
+DA:85,0
+DA:86,0
+DA:87,0
+DA:88,0
+DA:89,0
+DA:90,0
+DA:91,0
+DA:93,0
+DA:94,0
+BRDA:84,46,0,0
+BRDA:86,64,0,0
+BRDA:86,98,0,0
+BRDA:86,98,1,0
+BRDA:86,64,1,0
+BRDA:86,246,0,0
+BRDA:86,246,1,0
+BRDA:90,478,0,0
+BRDA:90,478,1,0
+BRDA:84,46,1,0
+FN:97,System.Void slideshow.web.Controllers.SectionController/<Delete>d__7::MoveNext()
+FNDA:0,System.Void slideshow.web.Controllers.SectionController/<Delete>d__7::MoveNext()
+DA:98,0
+DA:99,0
+DA:100,0
+DA:101,0
+DA:103,0
+DA:104,0
+DA:105,0
+DA:106,0
+BRDA:103,132,0,0
+BRDA:103,132,1,0
+FN:110,System.Void slideshow.web.Controllers.SectionController/<Delete>d__8::MoveNext()
+FNDA:0,System.Void slideshow.web.Controllers.SectionController/<Delete>d__8::MoveNext()
+DA:111,0
+DA:113,0
+DA:114,0
+DA:115,0
+DA:116,0
+DA:117,0
+BRDA:111,14,0,0
+BRDA:113,62,0,0
+BRDA:113,62,1,0
+BRDA:115,226,0,0
+BRDA:111,14,1,0
+BRDA:115,226,1,0
+FN:123,System.Boolean slideshow.web.Controllers.SectionController/<>c__DisplayClass9_0::<Up>b__0(slideshow.core.Models.ISection)
+FNDA:0,System.Boolean slideshow.web.Controllers.SectionController/<>c__DisplayClass9_0::<Up>b__0(slideshow.core.Models.ISection)
+DA:124,0
+FN:124,System.Boolean slideshow.web.Controllers.SectionController/<>c__DisplayClass9_0::<Up>b__1(slideshow.core.Models.ISection)
+FNDA:0,System.Boolean slideshow.web.Controllers.SectionController/<>c__DisplayClass9_0::<Up>b__1(slideshow.core.Models.ISection)
+DA:125,0
+FN:137,System.Int32 slideshow.web.Controllers.SectionController/<>c::<Up>b__9_3(slideshow.core.Models.ISection)
+FNDA:0,System.Int32 slideshow.web.Controllers.SectionController/<>c::<Up>b__9_3(slideshow.core.Models.ISection)
+DA:138,0
+FN:153,System.Int32 slideshow.web.Controllers.SectionController/<>c::<Down>b__10_2(slideshow.core.Models.ISection)
+FNDA:0,System.Int32 slideshow.web.Controllers.SectionController/<>c::<Down>b__10_2(slideshow.core.Models.ISection)
+DA:154,0
+FN:156,System.Int32 slideshow.web.Controllers.SectionController/<>c::<Down>b__10_3(slideshow.core.Models.ISection)
+FNDA:0,System.Int32 slideshow.web.Controllers.SectionController/<>c::<Down>b__10_3(slideshow.core.Models.ISection)
+DA:157,0
+FN:166,System.Int32 slideshow.web.Controllers.SectionController/<>c::<Down>b__10_4(slideshow.core.Models.ISection)
+FNDA:0,System.Int32 slideshow.web.Controllers.SectionController/<>c::<Down>b__10_4(slideshow.core.Models.ISection)
+DA:167,0
+FN:120,System.Void slideshow.web.Controllers.SectionController/<Up>d__9::MoveNext()
+FNDA:0,System.Void slideshow.web.Controllers.SectionController/<Up>d__9::MoveNext()
+DA:121,0
+DA:123,0
+DA:126,0
+DA:127,0
+DA:128,0
+DA:129,0
+DA:131,0
+DA:132,0
+DA:133,0
+DA:134,0
+DA:135,0
+DA:137,0
+DA:139,0
+DA:140,0
+DA:141,0
+DA:143,0
+DA:145,0
+DA:146,0
+BRDA:125,150,0,0
+BRDA:125,150,1,0
+BRDA:126,201,0,0
+BRDA:126,201,1,0
+BRDA:138,316,0,0
+BRDA:138,316,1,0
+BRDA:138,424,1,0
+BRDA:138,424,0,0
+BRDA:143,500,0,0
+BRDA:143,500,1,0
+FN:152,System.Boolean slideshow.web.Controllers.SectionController/<>c__DisplayClass10_0::<Down>b__0(slideshow.core.Models.ISection)
+FNDA:0,System.Boolean slideshow.web.Controllers.SectionController/<>c__DisplayClass10_0::<Down>b__0(slideshow.core.Models.ISection)
+DA:153,0
+FN:149,System.Void slideshow.web.Controllers.SectionController/<Down>d__10::MoveNext()
+FNDA:0,System.Void slideshow.web.Controllers.SectionController/<Down>d__10::MoveNext()
+DA:150,0
+DA:152,0
+DA:155,0
+DA:156,0
+DA:158,0
+DA:160,0
+DA:161,0
+DA:162,0
+DA:163,0
+DA:164,0
+DA:166,0
+DA:168,0
+DA:169,0
+DA:170,0
+DA:172,0
+DA:174,0
+DA:175,0
+BRDA:154,150,0,0
+BRDA:154,150,1,0
+BRDA:155,201,0,0
+BRDA:157,227,0,0
+BRDA:157,227,1,0
+BRDA:155,201,1,0
+BRDA:167,359,0,0
+BRDA:167,359,1,0
+BRDA:167,467,1,0
+BRDA:167,467,0,0
+BRDA:172,543,0,0
+BRDA:172,543,1,0
+LF:116
+LH:0
+BRF:48
+BRH:0
+FNF:18
+FNH:0
+end_of_record
+SF:d:\vortrag\slideshow\src\slideshow.web\Controllers\SlideController.cs
+FN:188,slideshow.web.Models.SlideViewModel slideshow.web.Controllers.SlideController::CreateSlideViewModel(slideshow.core.Models.ISlide)
+FNDA:0,slideshow.web.Models.SlideViewModel slideshow.web.Controllers.SlideController::CreateSlideViewModel(slideshow.core.Models.ISlide)
+DA:189,0
+DA:190,0
+DA:191,0
+DA:192,0
+DA:193,0
+DA:194,0
+DA:195,0
+DA:196,0
+DA:197,0
+DA:198,0
+DA:199,0
+DA:200,0
+FN:202,slideshow.web.Models.SlideViewModelWithNavigation slideshow.web.Controllers.SlideController::CreateSlideViewModelWithNavigation(slideshow.core.Models.ISlide,slideshow.core.Models.ISlide,slideshow.core.Models.ISlide)
+FNDA:0,slideshow.web.Models.SlideViewModelWithNavigation slideshow.web.Controllers.SlideController::CreateSlideViewModelWithNavigation(slideshow.core.Models.ISlide,slideshow.core.Models.ISlide,slideshow.core.Models.ISlide)
+DA:203,0
+DA:204,0
+DA:205,0
+DA:206,0
+DA:207,0
+DA:208,0
+DA:209,0
+DA:210,0
+DA:211,0
+DA:212,0
+DA:213,0
+DA:214,0
+DA:215,0
+BRDA:204,86,0,0
+BRDA:204,86,1,0
+BRDA:204,106,0,0
+BRDA:204,106,1,0
+FN:15,System.Void slideshow.web.Controllers.SlideController::.ctor(slideshow.core.Repository.ISlideRepository,slideshow.core.Repository.ISectionRepository)
+FNDA:0,System.Void slideshow.web.Controllers.SlideController::.ctor(slideshow.core.Repository.ISlideRepository,slideshow.core.Repository.ISectionRepository)
+DA:16,0
+DA:17,0
+DA:18,0
+DA:19,0
+DA:20,0
+FN:23,System.Void slideshow.web.Controllers.SlideController/<Index>d__3::MoveNext()
+FNDA:0,System.Void slideshow.web.Controllers.SlideController/<Index>d__3::MoveNext()
+DA:24,0
+DA:25,0
+DA:27,0
+DA:29,0
+DA:30,0
+DA:31,0
+DA:32,0
+DA:33,0
+DA:35,0
+DA:37,0
+DA:38,0
+DA:39,0
+DA:40,0
+DA:41,0
+DA:42,0
+DA:43,0
+DA:44,0
+DA:53,0
+DA:54,0
+BRDA:25,93,0,0
+BRDA:25,93,1,0
+BRDA:25,183,0,0
+BRDA:25,183,1,0
+BRDA:29,260,0,0
+BRDA:29,260,1,0
+FN:57,System.Void slideshow.web.Controllers.SlideController/<Create>d__4::MoveNext()
+FNDA:0,System.Void slideshow.web.Controllers.SlideController/<Create>d__4::MoveNext()
+DA:58,0
+DA:59,0
+DA:60,0
+DA:61,0
+DA:62,0
+DA:63,0
+DA:64,0
+BRDA:58,14,0,0
+BRDA:60,84,0,0
+BRDA:60,84,1,0
+BRDA:60,174,0,0
+BRDA:60,174,1,0
+BRDA:61,236,0,0
+BRDA:58,14,1,0
+BRDA:61,236,1,0
+FN:67,System.Void slideshow.web.Controllers.SlideController/<View>d__5::MoveNext()
+FNDA:0,System.Void slideshow.web.Controllers.SlideController/<View>d__5::MoveNext()
+DA:68,0
+DA:69,0
+DA:70,0
+DA:71,0
+DA:72,0
+DA:73,0
+DA:74,0
+DA:75,0
+DA:76,0
+BRDA:69,63,0,0
+BRDA:69,63,1,0
+BRDA:70,200,0,0
+BRDA:70,200,1,0
+BRDA:71,339,0,0
+BRDA:71,339,1,0
+BRDA:74,527,0,0
+BRDA:74,527,1,0
+FN:79,System.Void slideshow.web.Controllers.SlideController/<Edit>d__6::MoveNext()
+FNDA:0,System.Void slideshow.web.Controllers.SlideController/<Edit>d__6::MoveNext()
+DA:80,0
+DA:81,0
+DA:82,0
+DA:83,0
+DA:84,0
+DA:85,0
+BRDA:82,75,0,0
+BRDA:82,75,1,0
+FN:91,System.Void slideshow.web.Controllers.SlideController/<Edit>d__7::MoveNext()
+FNDA:0,System.Void slideshow.web.Controllers.SlideController/<Edit>d__7::MoveNext()
+DA:92,0
+DA:93,0
+DA:94,0
+DA:95,0
+DA:96,0
+DA:97,0
+DA:98,0
+DA:99,0
+DA:100,0
+DA:101,0
+DA:102,0
+DA:103,0
+DA:105,0
+DA:106,0
+BRDA:93,50,0,0
+BRDA:95,91,0,0
+BRDA:95,91,1,0
+BRDA:95,182,0,0
+BRDA:95,182,1,0
+BRDA:96,220,0,0
+BRDA:96,261,0,0
+BRDA:96,261,1,0
+BRDA:96,220,1,0
+BRDA:96,411,0,0
+BRDA:96,411,1,0
+BRDA:102,689,0,0
+BRDA:102,689,1,0
+BRDA:93,50,1,0
+FN:109,System.Void slideshow.web.Controllers.SlideController/<Delete>d__8::MoveNext()
+FNDA:0,System.Void slideshow.web.Controllers.SlideController/<Delete>d__8::MoveNext()
+DA:110,0
+DA:111,0
+DA:112,0
+DA:113,0
+DA:114,0
+DA:115,0
+DA:116,0
+DA:117,0
+DA:118,0
+BRDA:110,17,0,0
+BRDA:114,141,0,0
+BRDA:114,141,1,0
+BRDA:114,231,0,0
+BRDA:114,231,1,0
+BRDA:115,293,0,0
+BRDA:110,17,1,0
+BRDA:115,293,1,0
+FN:122,System.Void slideshow.web.Controllers.SlideController/<Delete>d__9::MoveNext()
+FNDA:0,System.Void slideshow.web.Controllers.SlideController/<Delete>d__9::MoveNext()
+DA:123,0
+DA:124,0
+DA:125,0
+DA:126,0
+DA:127,0
+DA:128,0
+BRDA:123,14,0,0
+BRDA:124,62,0,0
+BRDA:124,62,1,0
+BRDA:126,226,0,0
+BRDA:123,14,1,0
+BRDA:126,226,1,0
+FN:134,System.Boolean slideshow.web.Controllers.SlideController/<>c__DisplayClass10_0::<Up>b__0(slideshow.core.Models.ISlide)
+FNDA:0,System.Boolean slideshow.web.Controllers.SlideController/<>c__DisplayClass10_0::<Up>b__0(slideshow.core.Models.ISlide)
+DA:135,0
+FN:135,System.Boolean slideshow.web.Controllers.SlideController/<>c__DisplayClass10_0::<Up>b__1(slideshow.core.Models.ISlide)
+FNDA:0,System.Boolean slideshow.web.Controllers.SlideController/<>c__DisplayClass10_0::<Up>b__1(slideshow.core.Models.ISlide)
+DA:136,0
+FN:148,System.Int32 slideshow.web.Controllers.SlideController/<>c::<Up>b__10_3(slideshow.core.Models.ISlide)
+FNDA:0,System.Int32 slideshow.web.Controllers.SlideController/<>c::<Up>b__10_3(slideshow.core.Models.ISlide)
+DA:149,0
+FN:164,System.Int32 slideshow.web.Controllers.SlideController/<>c::<Down>b__11_2(slideshow.core.Models.ISlide)
+FNDA:0,System.Int32 slideshow.web.Controllers.SlideController/<>c::<Down>b__11_2(slideshow.core.Models.ISlide)
+DA:165,0
+FN:167,System.Int32 slideshow.web.Controllers.SlideController/<>c::<Down>b__11_3(slideshow.core.Models.ISlide)
+FNDA:0,System.Int32 slideshow.web.Controllers.SlideController/<>c::<Down>b__11_3(slideshow.core.Models.ISlide)
+DA:168,0
+FN:177,System.Int32 slideshow.web.Controllers.SlideController/<>c::<Down>b__11_4(slideshow.core.Models.ISlide)
+FNDA:0,System.Int32 slideshow.web.Controllers.SlideController/<>c::<Down>b__11_4(slideshow.core.Models.ISlide)
+DA:178,0
+FN:131,System.Void slideshow.web.Controllers.SlideController/<Up>d__10::MoveNext()
+FNDA:0,System.Void slideshow.web.Controllers.SlideController/<Up>d__10::MoveNext()
+DA:132,0
+DA:133,0
+DA:134,0
+DA:137,0
+DA:138,0
+DA:139,0
+DA:140,0
+DA:142,0
+DA:143,0
+DA:144,0
+DA:145,0
+DA:146,0
+DA:148,0
+DA:150,0
+DA:151,0
+DA:152,0
+DA:154,0
+DA:156,0
+DA:157,0
+BRDA:132,14,0,0
+BRDA:133,85,0,0
+BRDA:133,85,1,0
+BRDA:133,175,0,0
+BRDA:133,175,1,0
+BRDA:136,313,0,0
+BRDA:136,313,1,0
+BRDA:137,366,0,0
+BRDA:137,366,1,0
+BRDA:149,481,0,0
+BRDA:149,481,1,0
+BRDA:149,592,1,0
+BRDA:149,592,0,0
+BRDA:154,668,0,0
+BRDA:132,14,1,0
+BRDA:154,668,1,0
+FN:163,System.Boolean slideshow.web.Controllers.SlideController/<>c__DisplayClass11_0::<Down>b__0(slideshow.core.Models.ISlide)
+FNDA:0,System.Boolean slideshow.web.Controllers.SlideController/<>c__DisplayClass11_0::<Down>b__0(slideshow.core.Models.ISlide)
+DA:164,0
+FN:160,System.Void slideshow.web.Controllers.SlideController/<Down>d__11::MoveNext()
+FNDA:0,System.Void slideshow.web.Controllers.SlideController/<Down>d__11::MoveNext()
+DA:161,0
+DA:162,0
+DA:163,0
+DA:166,0
+DA:167,0
+DA:169,0
+DA:171,0
+DA:172,0
+DA:173,0
+DA:174,0
+DA:175,0
+DA:177,0
+DA:179,0
+DA:180,0
+DA:181,0
+DA:183,0
+DA:185,0
+DA:186,0
+BRDA:161,14,0,0
+BRDA:162,85,0,0
+BRDA:162,85,1,0
+BRDA:162,175,0,0
+BRDA:162,175,1,0
+BRDA:165,313,0,0
+BRDA:165,313,1,0
+BRDA:166,366,0,0
+BRDA:168,392,0,0
+BRDA:168,392,1,0
+BRDA:166,366,1,0
+BRDA:178,524,0,0
+BRDA:178,524,1,0
+BRDA:178,635,1,0
+BRDA:178,635,0,0
+BRDA:183,711,0,0
+BRDA:161,14,1,0
+BRDA:183,711,1,0
+LF:144
+LH:0
+BRF:90
+BRH:0
+FNF:19
+FNH:0
+end_of_record
+SF:C:\Users\juergen\.nuget\packages\microsoft.net.test.sdk\16.0.1\build\netcoreapp1.0\Microsoft.NET.Test.Sdk.Program.cs
+FN:3,System.Void AutoGeneratedProgram::Main(System.String[])
+FNDA:0,System.Void AutoGeneratedProgram::Main(System.String[])
+DA:4,0
+LF:1
+LH:0
+BRF:0
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:d:\vortrag\slideshow\test\slideshow.web.tests\ParallelTest.cs
+FN:18,System.Void slideshow.web.tests.ParallelTest::TestMethod2()
+FNDA:0,System.Void slideshow.web.tests.ParallelTest::TestMethod2()
+DA:19,0
+DA:20,0
+DA:21,0
+FN:24,System.Void slideshow.web.tests.ParallelTest::TestMethod3()
+FNDA:0,System.Void slideshow.web.tests.ParallelTest::TestMethod3()
+DA:25,0
+DA:26,0
+DA:27,0
+FN:12,System.Void slideshow.web.tests.ParallelTest/<TestMethod1>d__0::MoveNext()
+FNDA:0,System.Void slideshow.web.tests.ParallelTest/<TestMethod1>d__0::MoveNext()
+DA:13,0
+DA:14,0
+DA:15,0
+BRDA:14,36,0,0
+BRDA:14,36,1,0
+LF:9
+LH:0
+BRF:2
+BRH:0
+FNF:3
+FNH:0
+end_of_record
+SF:d:\vortrag\slideshow\test\slideshow.web.tests\SectionControllerTest.cs
+FN:22,System.Void slideshow.web.tests.SectionControllerTest::MyTestInitialize()
+FNDA:0,System.Void slideshow.web.tests.SectionControllerTest::MyTestInitialize()
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+FN:29,System.Void slideshow.web.tests.SectionControllerTest::CanGetIndex()
+FNDA:0,System.Void slideshow.web.tests.SectionControllerTest::CanGetIndex()
+DA:30,0
+DA:32,0
+DA:33,0
+DA:34,0
+DA:35,0
+DA:36,0
+DA:38,0
+DA:40,0
+DA:41,0
+DA:43,0
+DA:45,0
+DA:47,0
+DA:49,0
+LF:17
+LH:0
+BRF:0
+BRH:0
+FNF:2
+FNH:0
+end_of_record

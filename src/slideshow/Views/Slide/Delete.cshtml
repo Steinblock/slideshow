@@ -1,0 +1,36 @@
+﻿@model SlideViewModel
+
+@{
+    //ViewData["Title"] = "Edit Section";
+}
+
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
+
+
+<form method="post" id="delete-form" class="form-horizontal">
+
+    <partial name="_ModalBegin" />
+
+    @Html.HiddenFor(x => x.Id)
+
+    <div class="col-sm-8 col-sm-offset-4">
+        <p>Wollen Sie die Section <b>@Model.Name</b> wirklich löschen?</p>
+    </div>
+
+    <br />
+    <br />
+
+    @if (!"XMLHttpRequest".Equals(Context.Request.Headers["x-requested-with"].FirstOrDefault(), StringComparison.OrdinalIgnoreCase))
+    {
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-4">
+                <button type="submit" id="btn-confirm-delete" class="btn btn-primary">OK</button>
+                <button type="button" id="btn-cancel-delete" class="btn btn-default">Abbrechen</button>
+            </div>
+        </div>
+    }
+
+    <partial name="_ModalEnd" />
+
+</form>

@@ -1,0 +1,177 @@
+﻿@inject slideshow.core.Repository.ISectionRepository repo
+
+@{
+    bool IsActiveSection(slideshow.core.Models.ISection section)
+    {
+        return Context.Request.Path.Value.StartsWith("/section/" + section.SectionId.ToString());
+    }
+    bool IsActiveSlide(slideshow.core.Models.ISlide slide)
+    {
+        return Context.Request.Path.Value.StartsWith("/section/" + slide.SectionId.ToString() + "/slide/" + slide.SlideId.ToString());
+    }
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - slideshow</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/jquery.bootgrid-1.3.1.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/jquery.bootgrid-1.3.1.min.css" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+
+    <link rel="stylesheet" href="~/css/highlight/dracula.css" />
+
+    @RenderSection("Styles", required: false)
+
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse navbar-global navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="~/">.NET Usergroup Rhein/Ruhr <span class="navbar-title" style="font-weight: bolder; margin-left:30px">Das Hauptproblem ist: Es muss schneller gehen</span></a>
+                @*<p class="navbar-brand" style="font-weight: bold">Das Hauptproblem ist: Es muss schneller gehen</p>*@
+                @*<div class="container-fluid"><p class="navbar-brand">Das Hauptproblem ist: Es muss schneller gehen</p></div>*@
+
+            </div>
+
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-user navbar-right">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><a href="~/Account/"><span class="glyphicon glyphicon-user"></span> @User.Identity.Name</a></li>
+                        <li>
+                            <a href="javascript:document.getElementById('logoutForm').submit()">
+                                <form id="logoutForm" action="~/Account/LogOut" method="post">
+                                    <span class="glyphicon glyphicon-log-out"></span> Logout
+                                </form>
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li><a href="~/Account/LogIn"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    }
+
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+    <nav class="navbar-primary" id="navbar-left">
+        <a href="#" class="btn-expand-collapse"><span class="glyphicon glyphicon-menu-left"></span></a>
+        <ul class="navbar-primary-menu">
+            @foreach (var _section in repo.GetAllSections())
+            {
+                <li class="@(IsActiveSection(_section) ? "active" : "")">
+                    <a role="button" data-toggle="collapse" data-parent="#navbar-left" href="#collapse@_section.SectionId" aria-expanded="true" aria-controls="collapse@_section.SectionId">
+                        <span class="glyphicon glyphicon-@_section.Class"></span><span class="nav-label">@_section.Name</span>
+                    </a>
+                    <ul id="collapse@_section.SectionId" class="panel-collapse collapse @(IsActiveSection(_section) ? "in" : "")" aria-expanded="true" style="">
+                        @foreach (var slide in repo.GetSlides(_section))
+                        {
+                            <li class="@(IsActiveSlide(slide) ? "active" : "")"><a href="~/section/@_section.SectionId/slide/@slide.SlideId"><span class="menu-text">@slide.Name</span></a></li>
+                        }
+                        @*<li><a href=""><span class="menu-text">Blank Page</span></a></li>
+                            <li><a href=""><span class="menu-text">Login</span></a></li>
+                            <li><a href=""><span class="menu-text">User Profile</span></a></li>
+                            <li><a href=""><span class="menu-text">Time Line</span></a></li>*@
+                    </ul>
+                </li>
+            }
+            @*<li>
+                    <a role="button" data-toggle="collapse" data-parent="#navbar-left" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <span class="glyphicon glyphicon-list-alt"></span><span class="nav-label">Dashboard</span>
+                    </a>
+                    <ul id="collapseOne" class="panel-collapse collapse" aria-expanded="true" style="">
+                        <li><a href=""><span class="menu-text">Blank Page</span></a></li>
+                        <li><a href=""><span class="menu-text">Login</span></a></li>
+                        <li><a href=""><span class="menu-text">User Profile</span></a></li>
+                        <li><a href=""><span class="menu-text">Time Line</span></a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a role="button" data-toggle="collapse" data-parent="#navbar-left" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                        <span class="glyphicon glyphicon-envelope"></span><span class="nav-label">Profile</span>
+                    </a>
+                    <ul id="collapseTwo" class="panel-collapse collapse" aria-expanded="true" style="">
+                        <li><a href=""><span class="menu-text">Blank Page</span></a></li>
+                        <li><a href=""><span class="menu-text">Login</span></a></li>
+                        <li><a href=""><span class="menu-text">User Profile</span></a></li>
+                        <li><a href=""><span class="menu-text">Time Line</span></a></li>
+                    </ul>
+                </li>*@
+            @if (User.IsInRole("admin"))
+            {
+                <li>
+                    @*<a href="#"><span class="glyphicon glyphicon-cog"></span><span class="nav-label">Settings</span></a>*@
+                    <a role="button" data-toggle="collapse" data-parent="#navbar-left" href="#collapseSettings" aria-expanded="true" aria-controls="collapseSettings">
+                        <span class="glyphicon glyphicon-envelope"></span><span class="nav-label">Settings</span>
+                    </a>
+                    <ul id="collapseSettings" class="panel-collapse collapse" aria-expanded="true" style="">
+                        <li><a href="~/section/"><span class="menu-text">Sections</span></a></li>
+                        @*<li><a href="~/slide/"><span class="menu-text">Slides</span></a></li>*@
+                    </ul>
+                </li>
+            }
+            
+        </ul>
+    </nav>
+
+    <partial name="_CookieConsentPartial" />
+
+    <div class="container main-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; 2019 - Jürgen Steinblock</p>
+        </footer>
+    </div>
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/jquery.bootgrid-1.3.1.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd">
+        </script>
+        <script src="~/js/jquery.bootgrid-1.3.1.min.js"></script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    <script src="~/js/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
