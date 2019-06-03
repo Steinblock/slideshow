@@ -5,10 +5,7 @@ using slideshow.core.Models;
 using slideshow.core.Repository;
 using slideshow.web.Controllers;
 using slideshow.web.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace slideshow.web.tests
 {
@@ -45,7 +42,13 @@ namespace slideshow.web.tests
             Assert.IsNotNull(model);
 
             Assert.AreEqual(2, model.total);
-                
+
+        }
+
+        [TestMethod]
+        public void CanGetCreate()
+        {
+            Assert.Fail();
         }
     }
 }
