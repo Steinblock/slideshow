@@ -5,29 +5,26 @@ cache:
     - tools/
     - packages/
 
-before_script:
-    - nuget config -set globalPackagesFolder=.\packages -configfile "$(pwd)\NuGet.Config"
-
 stages:
-    - build
-    - test
+  - build
+  - test
 
 build:
-    stage: build
-    script:
-        - "dotnet build"
-    artifacts:
-        paths:
-            - **/*/bin
+  stage: build
+  script:
+    - "dotnet build"
+  artifacts:
+    paths:
+      - "**/*/bin"
 
 test:
-    stage: test
-    script: 
-        - "[ -d tools/trx2junit ] || dotnet tool install trx2junit --tool-path tools/trx2junit"
-        - "dotnet test /p:CollectCoverage=true --results-directory $CI_PROJECT_DIR --logger trx;LogFileName=TestResults.trx"
-        - "[ -e TestResults.trx ] &&./tools/trx2junit/trx2junit.exe TestResults.trx"
-    artifacts:
-        paths:
-            - results
+  stage: test
+  script: 
+    - "[ -d tools/trx2junit ] || dotnet tool install trx2junit --tool-path tools/trx2junit"
+    - "dotnet test /p:CollectCoverage=true --results-directory $CI_PROJECT_DIR --logger trx;LogFileName=TestResults.trx"
+    - "[ -e TestResults.trx ] &&./tools/trx2junit/trx2junit.exe TestResults.trx"
+  artifacts:
+    paths:
+      - results
     reports:
-        junit: TestResults.xml
+      junit: TestResults.xml
