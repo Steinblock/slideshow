@@ -1,5 +1,5 @@
 terminal:
-  image: usacys/openstack-client
+  image: microsoft/dotnet:latest
   before_script:
     - dotnet build
   script: sleep 60
