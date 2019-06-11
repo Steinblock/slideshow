@@ -37,3 +37,8 @@ packages/*
 ## TODO: If the tool you use requires repositories.config
 ## uncomment the next line
 #!packages/repositories.config
+
+# ignore coverage results
+coverage.info
+coverage.json
+coverage.opencover.xml
