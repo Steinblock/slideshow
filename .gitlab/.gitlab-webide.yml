@@ -1,0 +1,6 @@
+ image: microsoft/dotnet:latest
+
+terminal:
+  before_script:
+    - dotnet build
+  script: sleep 60
