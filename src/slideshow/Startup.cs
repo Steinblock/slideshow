@@ -73,7 +73,7 @@ namespace slideshow
 
             // Other configurations
 
-            // authentication 
+            // authentication
             services.AddAuthentication(options =>
             {
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -104,9 +104,13 @@ namespace slideshow
             {
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
+
+                // https redirection does not work with gitpod
+                app.UseHttpsRedirection();
             }
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
+
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
