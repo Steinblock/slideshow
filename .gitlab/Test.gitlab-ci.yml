@@ -1,0 +1,20 @@
+test:
+  image: microsoft/dotnet:latest
+  stage: test
+  script:
+    - "[ -d tools/trx2junit ] || dotnet tool install trx2junit --tool-path tools/trx2junit"
+    - "dotnet test /p:CollectCoverage=true --results-directory $CI_PROJECT_DIR --logger trx;LogFileName=TestResults.trx"
+    # workaround: LogFileName is ignored
+    - mv *.trx TestResults.trx
+    - "[ -e TestResults.trx ] && ./tools/trx2junit/trx2junit TestResults.trx"
+  only:
+    - branches
+    - tags
+  except:
+    variables:
+      - $TEST_DISABLED
+  artifacts:
+#    paths:
+#      - results
+    reports:
+      junit: TestResults.xml
