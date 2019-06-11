@@ -1,0 +1,11 @@
+# https://www.gitpod.io/docs/41_Config_Gitpod_File/
+# The Docker image to run your workspace in. Defaults to gitpod/workspace-full
+image: microsoft/dotnet:latest
+# Command to start on workspace startup (optional)
+#tasks:
+#  - init: yarn install
+#    command: yarn build
+# Ports to expose on workspace startup (optional)
+#ports:
+#  - port: 8000
+#    onOpen: open-preview
