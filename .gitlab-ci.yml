@@ -1,6 +1,4 @@
 image: microsoft/dotnet:latest
-services:
-  - docker:dind
 
 cache:
   paths:
@@ -29,8 +27,12 @@ build:
     paths:
       - "**/*/bin"
 
+# https://docs.gitlab.com/ee/ci/docker/using_docker_build.html
 build-image:
   stage: build
+  image: docker:stable
+  services:
+    - docker:dind
   script:
     - docker build --pull -t $CONTAINER_TEST_IMAGE src -f src/slideshow/Dockerfile
     - docker push $CONTAINER_TEST_IMAGE
@@ -52,6 +54,9 @@ test:
 
 release-image:
   stage: release
+  image: docker:stable
+  services:
+    - docker:dind
   script:
     - docker pull $CONTAINER_TEST_IMAGE
     - docker tag $CONTAINER_TEST_IMAGE $CONTAINER_RELEASE_IMAGE
