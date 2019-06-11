@@ -1,4 +1,4 @@
-## Das Hauptproblem ist es muss schneller gehen
+## Slideshow
 
 Beispielprojekt für die .NET Usergroup Rhein/Ruhr
 
