@@ -58,8 +58,8 @@ variables:
 
   ROLLOUT_RESOURCE_TYPE: deployment
 
-  dependency_scanning: DEPENDENCY_SCANNING_DISABLED
-  license_management: LICENSE_MANAGEMENT_DISABLED
+  DEPENDENCY_SCANNING_DISABLED: "true"
+  LICENSE_MANAGEMENT_DISABLED: "true"
 
 
 stages:
