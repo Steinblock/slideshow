@@ -4,8 +4,8 @@ image: microsoft/dotnet:latest
 # Command to start on workspace startup (optional)
 tasks:
   - init: dotnet build
-  - command: dotnet test
   - command: dotnet run --project src/slideshow/slideshow.csproj
+  - command: dotnet test /p:CollectCoverage=true
 # Ports to expose on workspace startup (optional)
 ports:
   - port: 5000
