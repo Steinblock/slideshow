@@ -10,7 +10,7 @@ sast:
   allow_failure: true
   script:
     - for f in src/*/*.csproj ; do dotnet add "$f" package SecurityCodeScan ; done
-    - dotnet build --no-incremental /flp:v=q /flp:logfile=build.out
+    - dotnet build --no-incremental /flp:v=q /flp:logfile=msbuild.log
     - dotnet ./tools/dotnet2glsast/dotnet2glsast.dll
   artifacts:
     reports:
