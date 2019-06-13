@@ -28,7 +28,7 @@ namespace slideshow
                 .UseStartup<Startup>()
                 // use fixed ports for now  to avoid docker changing the ports 
                 // back to 80 / 443
-                .UseUrls("http://+:5000", "https://+:5001"); 
+                .UseUrls("http://+:5000"); //, "https://+:5001"); 
 
             var host = builder.Build();
 
