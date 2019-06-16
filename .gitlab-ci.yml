@@ -63,6 +63,8 @@ variables:
   CODE_QUALITY_DISABLED: "true"
   POSTGRES_ENABLED: "false"
 
+  K8S_SECRET_CI_MERGE_REQUEST_ID: $CI_MERGE_REQUEST_ID
+
 stages:
   - build
   - test
