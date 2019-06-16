@@ -35,6 +35,18 @@
 
     @RenderSection("Styles", required: false)
 
+    @*https://docs.gitlab.com/ce/ci/variables/predefined_variables.html*@
+    @if (Environment.GetEnvironmentVariable("CI_MERGE_REQUEST_ID") != null)
+    {
+        <script defer
+                data-project-id='12678898'
+                data-merge-request-id='@Environment.GetEnvironmentVariable("CI_MERGE_REQUEST_ID")'
+                data-mr-url='https://gitlab.com'
+                id='review-app-toolbar-script'
+                src='https://gitlab.com/assets/webpack/visual_review_toolbar.js'>
+        </script>
+    }
+
 </head>
 <body>
 
@@ -131,7 +143,7 @@
                     </ul>
                 </li>
             }
-            
+
         </ul>
     </nav>
 
