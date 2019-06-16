@@ -22,4 +22,5 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
 COPY slideshow/slideshow.db .
+
 ENTRYPOINT ["dotnet", "slideshow.dll"]
