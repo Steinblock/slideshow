@@ -3,7 +3,7 @@
 image: microsoft/dotnet:latest
 # Command to start on workspace startup (optional)
 tasks:
-  - init: dotnet build
+  - init: export ASPNETCORE_HTTPS_REDIRECTION_ENABLED=false
   - command: dotnet run --project src/slideshow/slideshow.csproj
   - command: dotnet test /p:CollectCoverage=true
 # Ports to expose on workspace startup (optional)

@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Ninject;
 using Ninject.Modules;
 using slideshow.core;
-using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -25,10 +23,7 @@ namespace slideshow
             var builder = WebHost.CreateDefaultBuilder(args)
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .ConfigureServices(configure => configure.AddSingleton(this.Kernel))
-                .UseStartup<Startup>()
-                // use fixed ports for now  to avoid docker changing the ports 
-                // back to 80 / 443
-                .UseUrls("http://+:5000"); //, "https://+:5001"); 
+                .UseStartup<Startup>();
 
             var host = builder.Build();
 

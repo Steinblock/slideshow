@@ -104,12 +104,14 @@ namespace slideshow
             {
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
-
-                // https redirection does not work with gitpod
-                app.UseHttpsRedirection();
             }
 
-            // app.UseHttpsRedirection();
+            if ((Environment.GetEnvironmentVariable("ASPNETCORE_HTTPS_REDIRECTION_ENABLED") ?? "true") == "true")
+            {
+                // https redirection does not work with gitpod
+                // allow disable it
+                app.UseHttpsRedirection();
+            }
 
             app.UseStaticFiles();
             app.UseCookiePolicy();

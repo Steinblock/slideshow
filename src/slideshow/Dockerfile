@@ -1,8 +1,7 @@
 FROM microsoft/dotnet:2.1-aspnetcore-runtime AS base
 WORKDIR /app
-#EXPOSE 80
-#EXPOSE 443
-EXPOSE 5000
+EXPOSE 80
+EXPOSE 443
 
 FROM microsoft/dotnet:2.1-sdk AS build
 WORKDIR /src
@@ -23,9 +22,5 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
 COPY slideshow/slideshow.db .
-
-# https://stackoverflow.com/questions/48669548/why-does-aspnet-core-start-on-port-80-from-within-docker/48669703
-# https://docs.microsoft.com/de-de/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-2.2#endpoint-configuration
-ENV ASPNETCORE_URLS http://+:5000
 
 ENTRYPOINT ["dotnet", "slideshow.dll"]
