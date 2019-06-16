@@ -36,7 +36,7 @@
     @RenderSection("Styles", required: false)
 
     @*https://docs.gitlab.com/ce/ci/variables/predefined_variables.html*@
-    @if (Environment.GetEnvironmentVariable("CI_MERGE_REQUEST_ID") != null)
+    @if (!String.IsNullOrEmpty(Environment.GetEnvironmentVariable("CI_MERGE_REQUEST_ID")))
     {
         <script defer
                 data-project-id='12678898'
