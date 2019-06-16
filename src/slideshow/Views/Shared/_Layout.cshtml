@@ -46,6 +46,17 @@
                 src='https://gitlab.com/assets/webpack/visual_review_toolbar.js'>
         </script>
     }
+    else if (!String.IsNullOrEmpty(Environment.GetEnvironmentVariable("HOSTNAME1")) && Environment.GetEnvironmentVariable("HOSTNAME1").StartsWith("review-"))
+    {
+        @* fallback to hostname if CI_MERGE_REQUEST_ID has not been set *@
+        <script defer
+                data-project-id='12678898'
+                data-merge-request-id='@Environment.GetEnvironmentVariable("HOSTNAME1").Trim('-')[1]'
+                data-mr-url='https://gitlab.com'
+                id='review-app-toolbar-script'
+                src='https://gitlab.com/assets/webpack/visual_review_toolbar.js'>
+        </script>
+    }
 
 </head>
 <body>
