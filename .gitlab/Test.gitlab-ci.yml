@@ -4,6 +4,7 @@ test:
   script:
     - "[ -d tools/trx2junit ] || dotnet tool install trx2junit --tool-path tools/trx2junit"
     - "dotnet test /p:CollectCoverage=true --results-directory $CI_PROJECT_DIR --logger trx;LogFileName=TestResults.trx"
+  after_script:
     # workaround: LogFileName is ignored
     - mv *.trx TestResults.trx
     - "[ -e TestResults.trx ] && ./tools/trx2junit/trx2junit TestResults.trx"
