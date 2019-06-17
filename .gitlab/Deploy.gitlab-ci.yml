@@ -196,11 +196,11 @@ production_manual:
     variables:
       - $INCREMENTAL_ROLLOUT_MODE == "timed"
 
-timed rollout 10%:
-  <<: *timed_rollout_template
-  stage: incremental rollout 10%
-  variables:
-    ROLLOUT_PERCENTAGE: 10
+#timed rollout 10%:
+#  <<: *timed_rollout_template
+#  stage: incremental rollout 10%
+#  variables:
+#    ROLLOUT_PERCENTAGE: 10
 
 timed rollout 25%:
   <<: *timed_rollout_template
