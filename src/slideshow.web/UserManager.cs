@@ -21,14 +21,18 @@ namespace slideshow.web
 
         public async Task SignInAsync(HttpContext httpContext, LogInViewModel user, bool isPersistent = false)
         {
-            
-            var salt = Environment.GetEnvironmentVariable("USERMANAGER_SALT") ?? throw new ArgumentNullException("env salt missing");
-            var expected = Environment.GetEnvironmentVariable($"USERMANAGER_{user.Name.ToUpper()}_HASH") ?? throw new ArgumentNullException("env hash missing for " + user.Name);
-            var actual = CreateHash(user.Pass, salt);
-            if (!Validate(user.Pass, salt, expected))
+            if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") != "Development")
             {
-                throw new UnauthorizedAccessException("password missmatch");
+                var salt = Environment.GetEnvironmentVariable("USERMANAGER_SALT") ?? throw new ArgumentNullException("env salt missing");
+                var expected = Environment.GetEnvironmentVariable($"USERMANAGER_{user.Name.ToUpper()}_HASH") ?? throw new ArgumentNullException("env hash missing for " + user.Name);
+                var actual = CreateHash(user.Pass, salt);
+
+                if (!Validate(user.Pass, salt, expected))
+                {
+                    throw new UnauthorizedAccessException("password missmatch");
+                }
             }
+
             var identity = new ClaimsIdentity(this.GetUserClaims(user), CookieAuthenticationDefaults.AuthenticationScheme);
             ClaimsPrincipal principal = new ClaimsPrincipal(identity);
 
@@ -74,8 +78,8 @@ namespace slideshow.web
                                 prf: KeyDerivationPrf.HMACSHA512,
                                 iterationCount: 10000,
                                 numBytesRequested: 256 / 8);
-
-            return Convert.ToBase64String(valueBytes);
+            return String.Join(",", valueBytes);
+            //return Convert.ToBase64String(valueBytes);
         }
 
         private static bool Validate(string value, string salt, string hash)
@@ -89,7 +93,8 @@ namespace slideshow.web
             using (var generator = RandomNumberGenerator.Create())
             {
                 generator.GetBytes(randomBytes);
-                return Convert.ToBase64String(randomBytes);
+                return String.Join(",", randomBytes);
+                //return Convert.ToBase64String(randomBytes);
             }
         }
     }
