@@ -454,10 +454,22 @@ rollout 100%:
 
     replicas=$(get_replicas "$track" "$percentage")
 
+    service_enabled="true"
+    postgres_enabled="$POSTGRES_ENABLED"
+
+    # if track is different than stable,
+    # re-use all attached resources
+    if [[ "$track" != "stable" ]]; then
+      service_enabled="false"
+      postgres_enabled="false"
+    fi
+
     if [[ -n "$(helm ls -q "^$name$")" ]]; then
+      echo "Postgres enabled = $postgres_enabled"
       helm upgrade --reuse-values \
         --wait \
         --set replicaCount="$replicas" \
+        --set postgresql.enabled="$postgres_enabled" \
         --namespace="$KUBE_NAMESPACE" \
         "$name" \
         chart/
