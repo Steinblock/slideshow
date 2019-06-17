@@ -1,5 +1,5 @@
 terminal:
-  image: microsoft/dotnet:latest
-  before_script:
-    - dotnet build
-  script: sleep 60
+  image: microsoft/dotnet:2.1-aspnetcore-runtime
+#  before_script:
+#    - dotnet build
+  script: sleep 180
