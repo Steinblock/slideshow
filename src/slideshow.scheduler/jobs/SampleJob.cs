@@ -19,7 +19,7 @@ namespace slideshow.scheduler.jobs
 
         public string Name => this.GetType().Name;
 
-        public string CronSchedule => "* * * * * ?";
+        public string CronSchedule => "0 * * * * ?";
 
         public async Task Execute(IJobExecutionContext context)
         {

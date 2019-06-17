@@ -1,5 +1,5 @@
-## Das Hauptproblem ist es muss schneller gehen
+## Slideshow
 
-Beispielprojekt für die .NET Usergroup Rhein/Ruhr
+Beispielprojekt fÃ¼r die .NET Usergroup Rhein/Ruhr
 
-Jürgen Steinblock, 2019
+JÃ¼rgen Steinblock - 2019

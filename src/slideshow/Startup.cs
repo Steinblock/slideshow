@@ -73,7 +73,7 @@ namespace slideshow
 
             // Other configurations
 
-            // authentication 
+            // authentication
             services.AddAuthentication(options =>
             {
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -106,7 +106,13 @@ namespace slideshow
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            if ((Environment.GetEnvironmentVariable("ASPNETCORE_HTTPS_REDIRECTION_ENABLED") ?? "true") == "true")
+            {
+                // https redirection does not work with gitpod
+                // allow disable it
+                app.UseHttpsRedirection();
+            }
+
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
