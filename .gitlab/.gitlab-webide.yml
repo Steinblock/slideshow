@@ -1,0 +1,5 @@
+terminal:
+  image: microsoft/dotnet:2.1-aspnetcore-runtime
+#  before_script:
+#    - dotnet build
+  script: sleep 180
