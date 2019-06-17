@@ -221,10 +221,10 @@ timed rollout 100%:
   variables:
     ROLLOUT_PERCENTAGE: 100
 
-rollout 10%:
-  <<: *manual_rollout_template
-  variables:
-    ROLLOUT_PERCENTAGE: 10
+#rollout 10%:
+#  <<: *manual_rollout_template
+#  variables:
+#    ROLLOUT_PERCENTAGE: 10
 
 rollout 25%:
   <<: *manual_rollout_template
