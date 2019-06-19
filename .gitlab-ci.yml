@@ -96,6 +96,13 @@ include:
 #  - template: Security/SAST.gitlab-ci.yml
   - local: .gitlab/SAST.gitlab-ci.yml
 
+# Override BUILD job to allow disable build step
+build:
+  except:
+    variables:
+      - $BUILD_DISABLED
+
+
 # Override DAST job to exclude master branch
 dast:
   except:
