@@ -10,7 +10,7 @@ dependency_scanning:
   image: microsoft/dotnet:latest
   allow_failure: true
   variables:
-    - RESULTFILE=$PWD/dotnet-retire.out
+    - RESULTFILE: $PWD/dotnet-retire.out
   script:
     - dotnet tool install -g dotnet-retire
     - 'for f in **/*.csproj ; do pushd $(dirname $f) > /dev/null && echo [[$f]] >> $RESULTFILE && dotnet-retire >> $RESULTFILE && popd > /dev/null ; done'
