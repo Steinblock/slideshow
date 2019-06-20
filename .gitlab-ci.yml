@@ -58,7 +58,7 @@ variables:
 
   ROLLOUT_RESOURCE_TYPE: deployment
 
-  DEPENDENCY_SCANNING_DISABLED: "true"
+  #DEPENDENCY_SCANNING_DISABLED: "true"
   LICENSE_MANAGEMENT_DISABLED: "true"
   CODE_QUALITY_DISABLED: "true"
   POSTGRES_ENABLED: "false"
@@ -91,7 +91,8 @@ include:
   - template: Jobs/Browser-Performance-Testing.gitlab-ci.yml
   - template: Security/DAST.gitlab-ci.yml
   - template: Security/Container-Scanning.gitlab-ci.yml
-  - template: Security/Dependency-Scanning.gitlab-ci.yml
+  #- template: Security/Dependency-Scanning.gitlab-ci.yml
+  - local: .gitlab/Dependency-Scanning.gitlab-ci.yml
   - template: Security/License-Management.gitlab-ci.yml
 #  - template: Security/SAST.gitlab-ci.yml
   - local: .gitlab/SAST.gitlab-ci.yml
