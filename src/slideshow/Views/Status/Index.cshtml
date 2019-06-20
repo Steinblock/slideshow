@@ -9,10 +9,10 @@
 <h3>@ViewData["Message"]</h3>
 
 <div class="row status-content">
-    <div class="col-md-4">
+    <div class="col-md-4 text-right">
         <h4>HostName</h4>
     </div>
-    <div class="col-md-4 text-right">
+    <div class="col-md-4">
         <h4>@Environment.MachineName</h4>
     </div>
     @if (User.IsInRole("admin"))
@@ -26,27 +26,27 @@
     }
 </div>
 <div class="row status-content">
+    <div class="col-md-4 text-right">
+        <h4>OSVersion</h4>
+    </div>
     <div class="col-md-4">
+        <h4>@Environment.OSVersion</h4>
+    </div>
+</div>
+<div class="row status-content">
+    <div class="col-md-4 text-right">
         <h4>ProcessorCount</h4>
     </div>
-    <div class="col-md-4 text-right">
+    <div class="col-md-4">
         <h4>@Environment.ProcessorCount</h4>
     </div>
 </div>
 <div class="row status-content">
-    <div class="col-md-4">
+    <div class="col-md-4 text-right">
         <h4>WorkingSet</h4>
     </div>
-    <div class="col-md-4 text-right">
-        <h4>@(Environment.WorkingSet / (1024 * 1024)) MB</h4>
-    </div>
-</div>
-<div class="row status-content">
     <div class="col-md-4">
-        <h4>OSVersion</h4>
-    </div>
-    <div class="col-md-4 text-right">
-        <h4>Environment.OSVersion</h4>
+        <h4>@(Environment.WorkingSet / (1024 * 1024)) MB</h4>
     </div>
 </div>
 
@@ -54,10 +54,10 @@
 {
     <div class="row status-content">
 
-        <div class="col-md-4">
+        <div class="col-md-4 text-right">
             <h4>@service.Name</h4>
         </div>
-        <div class="col-md-4 text-right">
+        <div class="col-md-4">
             <h4>@service.Status</h4>
         </div>
         <div class="col-md-4">
