@@ -14,7 +14,7 @@ dependency_scanning:
   script:
     - dotnet tool install dotnet-retire --tool-path tools
     - export PATH="$PATH:$PWD/tools"
-    - 'for f in $(find . -type f -name *.csproj) ; do echo $f && pushd $(dirname $f) > /dev/null && echo [[$f]] >> $RESULTFILE && dotnet-retire >> $RESULTFILE && popd > /dev/null ; done'
+    - 'for f in $(find . -type f -name *.csproj) ; do echo $f && pushd $(dirname $f) > /dev/null && echo \<\<$f\>\> >> $RESULTFILE && dotnet-retire >> $RESULTFILE && popd > /dev/null ; done'
     - dotnet ./tools/dotnet2glsast/dotnet2glsast.dll --converter=dotnet-retire --input=dotnet-retire.out --output=gl-dependency-scanning-report.json
   artifacts:
     reports:
