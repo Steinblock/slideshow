@@ -3,6 +3,7 @@ using slideshow.core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace slideshow.web.Controllers
@@ -19,6 +20,10 @@ namespace slideshow.web.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            if (this.services.Any(x => x.Status != ServiceStatus.Running))
+            {
+                this.HttpContext.Response.StatusCode = (int)HttpStatusCode.UnprocessableEntity;
+            }
             return Negotiate("Index", this.services);
         }
 
