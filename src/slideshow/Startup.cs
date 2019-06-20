@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -62,7 +62,8 @@ namespace slideshow
 
             services.AddMvc(config =>
             {
-                config.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+                // disabled, see #13
+                // config.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
                 config.RespectBrowserAcceptHeader = true;
                 config.InputFormatters.Add(new XmlSerializerInputFormatter(config));
                 config.OutputFormatters.Add(new XmlSerializerOutputFormatter());
