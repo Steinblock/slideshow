@@ -11,7 +11,7 @@ namespace slideshow.scheduler
     {
         public override void Load()
         {
-            this.Bind<IService>().To<SchedulerService>();
+            this.Bind<IService>().To<SchedulerService>().InSingletonScope();
             this.Bind<IJobRegistration>().To<SampleJob>();
         }
     }

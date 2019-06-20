@@ -65,6 +65,9 @@ variables:
 
   K8S_SECRET_CI_MERGE_REQUEST_ID: $CI_MERGE_REQUEST_ID
 
+  LIVENESSPROBE_PATH: /status
+  HELM_UPGRADE_EXTRA_ARGS: '--set livenessProbe.path="$LIVENESSPROBE_PATH"'
+
 stages:
   - build
   - test
