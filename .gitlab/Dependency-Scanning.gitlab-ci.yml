@@ -1,0 +1,29 @@
+# Read more about this feature here: https://docs.gitlab.com/ee/user/project/merge_requests/dependency_scanning.html
+#
+# Configure the scanning tool through the environment variables.
+# List of the variables: https://gitlab.com/gitlab-org/security-products/dependency-scanning#settings
+# How to set: https://docs.gitlab.com/ee/ci/yaml/#variables
+
+
+dependency_scanning:
+  stage: test
+  image: microsoft/dotnet:latest
+  allow_failure: true
+  script:
+    - RESULTFILE=$PWD/dotnet-retire.out
+    - dotnet tool install dotnet-retire --tool-path tools
+    - export PATH="$PATH:$PWD/tools"
+    - 'for f in $(find . -type f -name *.csproj) ; do echo $f && pushd $(dirname $f) > /dev/null && echo \<\<$f\>\> >> $RESULTFILE && dotnet-retire >> $RESULTFILE && popd > /dev/null ; done'
+    - dotnet ./tools/dotnet2glsast/dotnet2glsast.dll --converter=dotnet-retire --input=dotnet-retire.out --output=gl-dependency-scanning-report.json
+  artifacts:
+    reports:
+      dependency_scanning: gl-dependency-scanning-report.json
+  dependencies: []
+  only:
+    refs:
+      - branches
+    variables:
+      - $GITLAB_FEATURES =~ /\bdependency_scanning\b/
+  except:
+    variables:
+      - $DEPENDENCY_SCANNING_DISABLED
