@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Ninject.Modules;
 using slideshow.core;
+using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -28,6 +29,7 @@ namespace slideshow
             var host = builder.Build();
 
             this.Bind<IService>().To<WebHostService>()
+                .InSingletonScope()
                 .WithConstructorArgument("host", host);
 
         }
@@ -43,15 +45,40 @@ namespace slideshow
                 this.cts = new CancellationTokenSource();
             }
 
+            public string Name { get { return "WebHost"; } }
+
+            public ServiceStatus Status { get; set; } = ServiceStatus.Stopped;
+
             public Task StartAsync()
             {
-                host.RunAsync(cts.Token);
+                if (this.Status != ServiceStatus.Stopped) throw new InvalidOperationException("Service is not stopped");
+                try
+                {
+                    this.Status = ServiceStatus.StartPending;
+                    host.RunAsync(cts.Token);
+                    this.Status = ServiceStatus.Running;
+                }
+                catch (Exception)
+                {
+                    this.Status = ServiceStatus.Faulted;
+                }
                 return Task.CompletedTask;
+
             }
 
             public async Task StopAsync()
             {
-                await host.StopAsync();
+                if (this.Status != ServiceStatus.Running) throw new InvalidOperationException("Service is not running");
+                try
+                {
+                    this.Status = ServiceStatus.StopPending;
+                    await host.StopAsync();
+                    this.Status = ServiceStatus.Stopped;
+                }
+                catch (Exception)
+                {
+                    this.Status = ServiceStatus.Faulted;
+                }
             }
 
         }

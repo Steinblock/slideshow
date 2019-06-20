@@ -1,0 +1,49 @@
+﻿@model IEnumerable<IService>
+@using slideshow.core
+
+@{
+    ViewData["Title"] = "Services";
+}
+
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
+
+@foreach (var service in Model)
+{
+    <div class="row status-content">
+
+        <div class="col-md-4">
+            @service.Name
+        </div>
+        <div class="col-md-4">
+            @service.Status
+        </div>
+        <div class="col-md-4">
+            @if (User.IsInRole("admin"))
+            {
+                <form method="post">
+                    <input type="hidden" name="name" value="@service.Name" />
+                    @if (service.Status == ServiceStatus.Running)
+                    {
+                        <input class="btn btn-info" name="action" type="submit" value="Stop">
+                    }
+                    else if (service.Status == ServiceStatus.Stopped)
+                    {
+                        <input class="btn btn-info" name="action" type="submit" value="Start">
+                    }
+                </form>
+            }
+
+        </div>
+    </div>
+}
+
+@if (User.IsInRole("admin"))
+{
+    <div class="">
+        <form method="post">
+            <input type="hidden" name="name" v  alue="app">
+            <input class="btn btn-danger" type="submit" name="action" value="Crash me">
+        </form>
+    </div>
+}
