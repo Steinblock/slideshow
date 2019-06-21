@@ -90,10 +90,10 @@
         @foreach (DictionaryEntry envvar in Environment.GetEnvironmentVariables(target))
         {
             <div class="row status-content">
-                <div class="col-md-4 text-right">
+                <div class="col-md-6 text-right">
                     @envvar.Key
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     @envvar.Value
                 </div>
             </div>

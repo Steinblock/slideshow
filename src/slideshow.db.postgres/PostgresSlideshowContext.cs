@@ -15,14 +15,20 @@ namespace slideshow.db
         public static string GetConnectionString()
         {
 
-            var host = Environment.GetEnvironmentVariable("POSTGRES_HOST") ?? "localhost";
-            var database = Environment.GetEnvironmentVariable("POSTGRES_DB") ?? "slideshow";
-            var username = Environment.GetEnvironmentVariable("POSTGRES_USER") ?? "postgres";
-            var password = Environment.GetEnvironmentVariable("POSTGRES_PASSWORD") ?? "";
+            // gitlab only exposes the process environment variable
+            // DATABASE_URL=postgres://user:pass@host:5432/db
+            var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL") ?? throw new ArgumentNullException("DATABASE_URL is not defined");
 
-            // TODO: Enable Integrated Security=True; if password is empty (requires db setup)
-            // https://www.cafe-encounter.net/p2034/postgres-using-integrated-security-on-windows-on-localhost
-            return $"Host={host};Database={database};Username={username};Password={password}";
+            // https://stackoverflow.com/a/45916910/98491
+            if (Uri.TryCreate(databaseUrl, UriKind.Absolute, out Uri url))
+            {
+                // TODO: Enable Integrated Security=True; if password is empty (requires db setup)
+                // https://www.cafe-encounter.net/p2034/postgres-using-integrated-security-on-windows-on-localhost
+                return $"Host={url.Host};Username={url.UserInfo.Split(':')[0]};Password={url.UserInfo.Split(':')[1]};Database={url.LocalPath.Substring(1)};Pooling=true;";
+            }
+
+            throw new FormatException("DATABASE_URL is not well formatted");
+
 
         }
     }
