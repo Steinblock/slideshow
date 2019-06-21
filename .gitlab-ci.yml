@@ -93,8 +93,8 @@ include:
 #  - template: Jobs/Test.gitlab-ci.yml
   - local: .gitlab/Test.gitlab-ci.yml
   - template: Jobs/Code-Quality.gitlab-ci.yml
-#  - template: Jobs/Deploy.gitlab-ci.yml
-  - local: .gitlab/Deploy.gitlab-ci.yml
+  - template: Jobs/Deploy.gitlab-ci.yml
+#  - local: .gitlab/Deploy.gitlab-ci.yml
   - template: Jobs/Browser-Performance-Testing.gitlab-ci.yml
   - template: Security/DAST.gitlab-ci.yml
   - template: Security/Container-Scanning.gitlab-ci.yml
