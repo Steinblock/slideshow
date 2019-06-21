@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<IService>
 @using slideshow.core
+@using System.Collections
 
 @{
     ViewData["Title"] = "Status";
@@ -79,4 +80,24 @@
         </div>
     </div>
 }
-    
+
+@if (User.IsInRole("admin"))
+{
+    <h2>Environment Variables</h2>
+    @foreach (var target in Enum.GetValues(typeof(EnvironmentVariableTarget)).OfType<EnvironmentVariableTarget>().Reverse())
+    {
+        <h3>@target</h3>
+        @foreach (DictionaryEntry envvar in Environment.GetEnvironmentVariables(target))
+        {
+            <div class="row status-content">
+                <div class="col-md-4 text-right">
+                    @envvar.Key
+                </div>
+                <div class="col-md-4">
+                    @envvar.Value
+                </div>
+            </div>
+        }
+    }
+
+}
