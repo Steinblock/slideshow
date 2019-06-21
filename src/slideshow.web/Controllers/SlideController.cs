@@ -67,6 +67,7 @@ namespace slideshow.web.Controllers
         public async Task<IActionResult> View(int id)
         {
             var slide = await repo.GetSlideAsync(id);
+            if (slide == null) return NotFound();
             var prev = await repo.GetPrevSlideAsync(slide);
             var next = await repo.GetNextSlideAsync(slide);
             ViewData["Title"] = slide.Header;

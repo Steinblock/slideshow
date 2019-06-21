@@ -23,7 +23,16 @@ namespace slideshow
             //kernel.Load("slideshow.*.dll");
             kernel.Load("slideshow.data.dll");
             kernel.Load("slideshow.db.dll");
-            kernel.Load("slideshow.db.sqlite.dll");
+
+            if ((Environment.GetEnvironmentVariable("POSTGRES_ENABLED") ?? "false") != "false")
+            {
+                kernel.Load("slideshow.db.postgres.dll");
+            }
+            else
+            {
+                kernel.Load("slideshow.db.sqlite.dll");
+            }
+
             kernel.Load("slideshow.scheduler.dll");
             kernel.Load("slideshow.web.dll");
 

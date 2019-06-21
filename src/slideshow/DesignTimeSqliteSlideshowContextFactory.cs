@@ -9,14 +9,13 @@ using System.Threading.Tasks;
 namespace slideshow
 {
 
-    public class DesignTimeSlideshowContextFactory : IDesignTimeDbContextFactory<SqliteSlideshowContext>
+    public class DesignTimeSqliteSlideshowContextFactory : IDesignTimeDbContextFactory<SqliteSlideshowContext>
     {
         public DbContextOptions<SqliteSlideshowContext> GetDefaultOptions()
         {
+
             var optionsBuilder = new DbContextOptionsBuilder<SqliteSlideshowContext>();
-
             optionsBuilder.UseSqlite("Data Source=slideshow.db");
-
             return optionsBuilder.Options;
 
         }
