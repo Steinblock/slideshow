@@ -61,12 +61,16 @@ variables:
   #DEPENDENCY_SCANNING_DISABLED: "true"
   LICENSE_MANAGEMENT_DISABLED: "true"
   CODE_QUALITY_DISABLED: "true"
-  POSTGRES_ENABLED: "false"
+  #POSTGRES_ENABLED: "false"
 
   K8S_SECRET_CI_MERGE_REQUEST_ID: $CI_MERGE_REQUEST_ID
 
   LIVENESSPROBE_PATH: /status
   HELM_UPGRADE_EXTRA_ARGS: '--set livenessProbe.path="$LIVENESSPROBE_PATH"'
+
+  # https://docs.gitlab.com/ee/topics/autodevops/#migrations
+  #DB_MIGRATE: dotnet ef database update --project src/slideshow.db.postgres --startup-project src/slideshow --context PostgresSlideshowContext
+  DB_MIGRATE: bash migrate.sh
 
 stages:
   - build

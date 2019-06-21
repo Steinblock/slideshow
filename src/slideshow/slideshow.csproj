@@ -29,6 +29,7 @@
   <ItemGroup>
     <ProjectReference Include="..\slideshow.core\slideshow.core.csproj" />
     <ProjectReference Include="..\slideshow.data\slideshow.data.csproj" />
+    <ProjectReference Include="..\slideshow.db.postgres\slideshow.db.postgres.csproj" />
     <ProjectReference Include="..\slideshow.db.sqlite\slideshow.db.sqlite.csproj" />
     <ProjectReference Include="..\slideshow.db\slideshow.db.csproj" />
     <ProjectReference Include="..\slideshow.scheduler\slideshow.scheduler.csproj" />
