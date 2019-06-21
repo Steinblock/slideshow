@@ -2,6 +2,7 @@
 using slideshow.core.Models;
 using slideshow.core.Repository;
 using slideshow.data.Models;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,6 +16,11 @@ namespace slideshow.db
 
         public async Task<ISlide> CreateSlideAsync(ISection section)
         {
+            if (section == null)
+            {
+                throw new ArgumentNullException(nameof(section));
+            }
+
             var slide = new Slide();
             slide.Order = await context.Slides.Where(x => x.SectionId == section.SectionId).CountAsync() > 0 ? await context.Slides.Where(x => x.SectionId == section.SectionId).MaxAsync(x => x.Order) + 1 : 0;
             slide.SectionId = section.SectionId;
@@ -32,16 +38,31 @@ namespace slideshow.db
 
         public void DeleteSlide(ISlide slide)
         {
+            if (slide == null)
+            {
+                throw new ArgumentNullException(nameof(slide));
+            }
+
             this.context.Remove(slide);
         }
 
         public IQueryable<ISlide> GetAllSlides(ISection section)
         {
+            if (section == null)
+            {
+                throw new ArgumentNullException(nameof(section));
+            }
+
             return context.Slides.Where(x => x.SectionId == section.SectionId).OrderBy(x => x.Order);
         }
 
         public async Task<ISlide> GetPrevSlideAsync(ISlide slide)
         {
+            if (slide == null)
+            {
+                throw new ArgumentNullException(nameof(slide));
+            }
+
             var prev = await context.Slides.Where(x => x.SectionId == slide.SectionId && x.Order < slide.Order).OrderByDescending(x => x.Order).FirstOrDefaultAsync();
             if (prev == null)
             {
@@ -55,6 +76,11 @@ namespace slideshow.db
 
         public async Task<ISlide> GetNextSlideAsync(ISlide slide)
         {
+            if (slide == null)
+            {
+                throw new ArgumentNullException(nameof(slide));
+            }
+
             var next = await context.Slides.Where(x => x.SectionId == slide.SectionId && x.Order > slide.Order).OrderBy(x => x.Order).FirstOrDefaultAsync();
             if (next == null)
             {
