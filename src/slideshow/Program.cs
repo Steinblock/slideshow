@@ -24,7 +24,7 @@ namespace slideshow
             kernel.Load("slideshow.data.dll");
             kernel.Load("slideshow.db.dll");
 
-            if ((Environment.GetEnvironmentVariable("POSTGRES_ENABLED") ?? "false") != "false")
+            if ((Environment.GetEnvironmentVariable("DATABASE_URL") ?? String.Empty).StartsWith("postgres"))
             {
                 kernel.Load("slideshow.db.postgres.dll");
             }
