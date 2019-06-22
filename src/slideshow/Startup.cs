@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Ninject;
 using Ninject.Activation;
 using Ninject.Infrastructure.Disposal;
+using slideshow.core;
 using slideshow.core.Repository;
 using System;
 using System.Linq;
@@ -100,8 +101,8 @@ namespace slideshow
             services.AddTransient<ISectionRepository>(provider => kernel.Get<ISectionRepository>());
             services.AddTransient<ISlideRepository>(provider => kernel.Get<ISlideRepository>());
             services.AddTransient<ICacheEntryRepository>(provider => kernel.Get<ICacheEntryRepository>());
-            //services.AddTransient<IDistributedCache>(provider => kernel.Get<IDistributedCache>());
-            //return services.BuildServiceProvider();
+            services.AddTransient<IBackupProvider>(provider => kernel.Get<IBackupProvider>());
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

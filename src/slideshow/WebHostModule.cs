@@ -34,6 +34,7 @@ namespace slideshow
                 .WithConstructorArgument("host", host);
 
             this.Bind<IDistributedCache>().To<DistributedCache>();
+            this.Bind<IBackupProvider>().To<BackupProvider>();
         }
 
         private class WebHostService : IService
