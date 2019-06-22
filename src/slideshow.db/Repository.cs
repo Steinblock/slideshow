@@ -18,6 +18,9 @@ namespace slideshow.db
             return await context.SaveChangesAsync();
         }
 
-
+        public int Save()
+        {
+            return context.SaveChanges();
+        }
     }
 }

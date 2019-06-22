@@ -16,6 +16,8 @@ namespace slideshow.db.sqlite
         {
             this.Bind<ISectionRepository>().To<SectionRepository>();
             this.Bind<ISlideRepository>().To<SlideRepository>();
+            this.Bind<ICacheEntryRepository>().To<CacheEntryRepository>();
+
         }
 
     }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.DependencyInjection;
 using Ninject.Modules;
 using slideshow.core;
@@ -32,6 +33,7 @@ namespace slideshow
                 .InSingletonScope()
                 .WithConstructorArgument("host", host);
 
+            this.Bind<IDistributedCache>().To<DistributedCache>();
         }
 
         private class WebHostService : IService
