@@ -9,7 +9,7 @@ namespace slideshow.data.Models
         public int SlideId { get; set; }
         [Required, StringLength(20, MinimumLength = 3)]
         public string Name { get; set; }
-        [Required, StringLength(20, MinimumLength = 3)]
+        [Required, StringLength(100, MinimumLength = 3)]
         public string Header { get; set; }
         public string Content { get; set; }
 
