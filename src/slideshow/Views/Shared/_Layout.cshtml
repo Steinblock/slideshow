@@ -1,4 +1,5 @@
 ﻿@inject slideshow.core.Repository.ISectionRepository repo
+@inject slideshow.core.IFeatureToggleProvider feature
 
 @{
     bool IsActiveSection(slideshow.core.Models.ISection section)
@@ -164,7 +165,10 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2019 - Jürgen Steinblock - running on: <a href="~/status"><b>@Environment.MachineName</b></a></p>
+            @if (feature.IsEnabled("show_status_bar"))
+            {
+                <p>&copy; 2019 - Jürgen Steinblock - running on: <a href="~/status"><b>@Environment.MachineName</b></a></p>
+            }
         </footer>
     </div>
 

@@ -33,6 +33,8 @@ namespace slideshow
                 .InSingletonScope()
                 .WithConstructorArgument("host", host);
 
+            this.Bind<IFeatureToggleProvider>().To<UnleashFeaturToggleProvider>().InSingletonScope();
+
             this.Bind<IDistributedCache>().To<DistributedCache>();
             this.Bind<IBackupProvider>().To<BackupProvider>();
         }
