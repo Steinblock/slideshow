@@ -9,5 +9,7 @@ namespace slideshow.core.Repository
     public interface IRepository
     {
         Task<int> SaveAsync(CancellationToken cancellationToken = default(CancellationToken));
+        int Save();
+
     }
 }

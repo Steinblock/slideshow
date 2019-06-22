@@ -14,6 +14,7 @@ namespace slideshow.db
 
         public DbSet<Section> Sections { get; set; }
         public DbSet<Slide> Slides { get; set; }
+        public DbSet<CacheEntry> CacheEntries { get; set; }
 
         public SlideshowContext(DbContextOptions options) : base(options)
         {

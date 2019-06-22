@@ -23,7 +23,7 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
 COPY src/slideshow/slideshow.db .
-COPY migrate.sh .
+# COPY migrate.sh .
 
 # https://stackoverflow.com/questions/48669548/why-does-aspnet-core-start-on-port-80-from-within-docker/48669703
 # https://docs.microsoft.com/de-de/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-2.2#endpoint-configuration

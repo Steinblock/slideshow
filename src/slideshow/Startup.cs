@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
 using Microsoft.AspNetCore.Mvc.ViewFeatures.Internal;
+using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Ninject;
@@ -60,6 +61,16 @@ namespace slideshow
                     options.LogoutPath = "/Account/Logout";
                 });
 
+            services.AddSingleton<IDistributedCache, DistributedCache>();
+
+            Func<ICacheEntryRepository> factory = () => kernel.Get<ICacheEntryRepository>();
+            services.AddDataProtection(config =>
+            {
+                config.ApplicationDiscriminator = "slideshow";
+            }).PersistKeysToDb(factory);
+            
+            //services.AddDistributedCache();
+
             services.AddMvc(config =>
             {
                 // disabled, see #13
@@ -88,7 +99,8 @@ namespace slideshow
 
             services.AddTransient<ISectionRepository>(provider => kernel.Get<ISectionRepository>());
             services.AddTransient<ISlideRepository>(provider => kernel.Get<ISlideRepository>());
-
+            services.AddTransient<ICacheEntryRepository>(provider => kernel.Get<ICacheEntryRepository>());
+            //services.AddTransient<IDistributedCache>(provider => kernel.Get<IDistributedCache>());
             //return services.BuildServiceProvider();
         }
 
@@ -144,6 +156,9 @@ namespace slideshow
 
             // Cross-wire required framework services
             kernel.BindToMethod(app.GetRequestService<IViewBufferScope>);
+
+            //kernel.Bind<IDistributedCache>().To<DistributedCache>();
+
 
             return kernel;
         }
