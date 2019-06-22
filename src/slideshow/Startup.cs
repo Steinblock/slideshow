@@ -74,8 +74,7 @@ namespace slideshow
 
             services.AddMvc(config =>
             {
-                // disabled, see #13
-                // config.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+                config.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
                 config.RespectBrowserAcceptHeader = true;
                 config.InputFormatters.Add(new XmlSerializerInputFormatter(config));
                 config.OutputFormatters.Add(new XmlSerializerOutputFormatter());
