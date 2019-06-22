@@ -37,9 +37,14 @@ namespace slideshow
             kernel.Load("slideshow.scheduler.dll");
             kernel.Load("slideshow.web.dll");
 
-
-            var context = kernel.Get<SlideshowContext>();
-            context.Database.Migrate();
+            if (args.Any(x => x == "--migrate"))
+            {
+                Console.WriteLine("Try migrate database");
+                var context = kernel.Get<SlideshowContext>();
+                context.Database.Migrate();
+                Console.WriteLine("Done");
+                Environment.Exit(0);
+            }
 
             var host = HostFactory.New(x =>
             {

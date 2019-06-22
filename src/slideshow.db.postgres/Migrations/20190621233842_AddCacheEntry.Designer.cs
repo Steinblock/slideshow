@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using slideshow.db;
@@ -9,9 +10,10 @@ using slideshow.db;
 namespace slideshow.db.postgres.Migrations
 {
     [DbContext(typeof(PostgresSlideshowContext))]
-    partial class PostgresSlideshowContextModelSnapshot : ModelSnapshot
+    [Migration("20190621233842_AddCacheEntry")]
+    partial class AddCacheEntry
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,10 +29,6 @@ namespace slideshow.db.postgres.Migrations
                     b.Property<DateTimeOffset?>("AbsoluteExpiration");
 
                     b.Property<TimeSpan?>("AbsoluteExpirationRelativeToNow");
-
-                    b.Property<DateTimeOffset?>("CreatedOn");
-
-                    b.Property<DateTimeOffset?>("ModifiedOn");
 
                     b.Property<TimeSpan?>("SlidingExpiration");
 
