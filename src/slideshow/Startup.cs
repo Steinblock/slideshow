@@ -100,6 +100,9 @@ namespace slideshow
             services.AddTransient<ISectionRepository>(provider => kernel.Get<ISectionRepository>());
             services.AddTransient<ISlideRepository>(provider => kernel.Get<ISlideRepository>());
             services.AddTransient<ICacheEntryRepository>(provider => kernel.Get<ICacheEntryRepository>());
+            //services.AddTransient<IDistributedCache>(provider => kernel.Get<IDistributedCache>());
+            services.AddSingleton<IFeatureToggleProvider>(provider => kernel.Get<IFeatureToggleProvider>());
+            //return services.BuildServiceProvider();
             services.AddTransient<IBackupProvider>(provider => kernel.Get<IBackupProvider>());
 
         }
