@@ -69,8 +69,8 @@ variables:
   HELM_UPGRADE_EXTRA_ARGS: '--set livenessProbe.path="$LIVENESSPROBE_PATH"'
 
   # https://docs.gitlab.com/ee/topics/autodevops/#migrations
-  #DB_MIGRATE: dotnet ef database update --project src/slideshow.db.postgres --startup-project src/slideshow --context PostgresSlideshowContext
-  DB_MIGRATE: bash migrate.sh
+  # DB_MIGRATE: dotnet ef database update --project src/slideshow.db.postgres --startup-project src/slideshow --context PostgresSlideshowContext
+  # DB_MIGRATE: bash migrate.sh
 
 stages:
   - build

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Ninject;
+using slideshow.db;
 using System;
 using System.Linq;
 using Topshelf;
@@ -37,6 +38,8 @@ namespace slideshow
             kernel.Load("slideshow.web.dll");
 
 
+            var context = kernel.Get<SlideshowContext>();
+            context.Database.Migrate();
 
             var host = HostFactory.New(x =>
             {
