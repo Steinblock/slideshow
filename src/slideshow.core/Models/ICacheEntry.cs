@@ -8,6 +8,8 @@ namespace slideshow.core.Models
     {
         string Key { get; set; }
         string Value { get; set; }
+        DateTimeOffset? CreatedOn { get; set; }
+        DateTimeOffset? ModifiedOn { get; set; }
         DateTimeOffset? AbsoluteExpiration { get; set; }
         TimeSpan? AbsoluteExpirationRelativeToNow { get; set; }
         TimeSpan? SlidingExpiration { get; set; }

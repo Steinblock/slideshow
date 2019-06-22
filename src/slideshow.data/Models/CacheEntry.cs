@@ -12,6 +12,8 @@ namespace slideshow.data.Models
         public string Key { get; set; }
         [Required]  
         public string Value { get; set; }
+        public DateTimeOffset? CreatedOn { get; set; }
+        public DateTimeOffset? ModifiedOn { get; set; }
         public DateTimeOffset? AbsoluteExpiration { get; set; }
         public TimeSpan? AbsoluteExpirationRelativeToNow { get; set; }
         public TimeSpan? SlidingExpiration { get; set; }

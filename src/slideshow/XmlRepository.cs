@@ -20,11 +20,11 @@ namespace slideshow
     // 
     public class XmlRepository : IXmlRepository
     {
-        private IKernel kernel;
+        private readonly Func<ICacheEntryRepository> factory;
 
-        public XmlRepository(IKernel kernel)
+        public XmlRepository(Func<ICacheEntryRepository> factory)
         {
-            this.kernel = kernel;
+            this.factory = factory;
         }
 
         public IReadOnlyCollection<XElement> GetAllElements()
@@ -34,7 +34,7 @@ namespace slideshow
 
         private IEnumerable<XElement> GetAllElementsCore()
         {
-            var repo = kernel.Get<ICacheEntryRepository>();
+            var repo = factory();
             var items = repo.GetAllCacheEntries().Where(x => x.Key.EndsWith(".xml"));
             foreach (var item in items)
             {
@@ -59,7 +59,7 @@ namespace slideshow
 
         private void StoreElementCore(XElement element, string filename)
         {
-            var repo = kernel.Get<ICacheEntryRepository>();
+            var repo = factory();
             var entry = repo.GetCacheEntry(filename) ?? repo.CreateCacheEntry(filename + ".xml");
             entry.Value = element.ToString();
             repo.Save();
@@ -87,7 +87,7 @@ namespace slideshow
     }
     public static class DataProtectionBuilderExtensions
     {
-        public static IDataProtectionBuilder PersistKeysToDb(this IDataProtectionBuilder builder, IKernel kernel)
+        public static IDataProtectionBuilder PersistKeysToDb(this IDataProtectionBuilder builder, Func<ICacheEntryRepository> factory)
         {
             if (builder == null)
             {
@@ -98,7 +98,7 @@ namespace slideshow
             {
                 return new ConfigureOptions<KeyManagementOptions>((Action<KeyManagementOptions>)delegate (KeyManagementOptions options)
                 {
-                    options.XmlRepository = new XmlRepository(kernel);
+                    options.XmlRepository = new XmlRepository(factory);
                 });
             });
             return builder;

@@ -63,10 +63,11 @@ namespace slideshow
 
             services.AddSingleton<IDistributedCache, DistributedCache>();
 
+            Func<ICacheEntryRepository> factory = () => kernel.Get<ICacheEntryRepository>();
             services.AddDataProtection(config =>
             {
                 config.ApplicationDiscriminator = "slideshow";
-            }).PersistKeysToDb(kernel);
+            }).PersistKeysToDb(factory);
             
             //services.AddDistributedCache();
 
