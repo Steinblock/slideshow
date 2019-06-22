@@ -1,6 +1,7 @@
 ﻿using slideshow.core.Models;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace slideshow.data.Models
 {
@@ -17,8 +18,14 @@ namespace slideshow.data.Models
 
         IList<ISlide> ISection.Slides
         {
-            get => (IList<ISlide>)Slides;
-            set => Slides = (IList<Slide>)value;
+            get
+            {
+                return Slides.Cast<ISlide>().ToList();
+            }
+            set
+            {
+                Slides = value.Cast<Slide>().ToList();
+            }
         }
     }
 }

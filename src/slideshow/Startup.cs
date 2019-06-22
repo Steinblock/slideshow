@@ -104,6 +104,8 @@ namespace slideshow
             //services.AddTransient<IDistributedCache>(provider => kernel.Get<IDistributedCache>());
             services.AddSingleton<IFeatureToggleProvider>(provider => kernel.Get<IFeatureToggleProvider>());
             //return services.BuildServiceProvider();
+            services.AddTransient<IBackupProvider>(provider => kernel.Get<IBackupProvider>());
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

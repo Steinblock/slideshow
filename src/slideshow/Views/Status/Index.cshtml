@@ -6,8 +6,10 @@
     ViewData["Title"] = "Status";
 }
 
-<h2>@ViewData["Title"]</h2>
-<h3>@ViewData["Message"]</h3>
+<a href="~/status">
+    <h2>@ViewData["Title"]</h2>
+    <h3>@ViewData["Message"]</h3>
+</a>
 
 <div class="row status-content">
     <div class="col-md-4 text-right">
@@ -80,6 +82,31 @@
         </div>
     </div>
 }
+
+@if (User.IsInRole("admin"))
+{
+    <div class="row status-content">
+
+        <form method="post" enctype="multipart/form-data" action="~/status/restore">
+
+            <div class="col-md-4">
+                <input type="file" name="file">
+            </div>
+            <div class="col-md-4">
+                <input class="btn btn-default" type="submit" name="action" value="Restore">
+            </div>
+        </form>
+
+        <form method="post" action="~/status/backup">
+
+            <div class="col-md-4">
+                <input class="btn btn-info" type="submit" name="action" value="Backup">
+            </div>
+        </form>
+
+    </div>
+}
+
 
 @if (User.IsInRole("admin"))
 {

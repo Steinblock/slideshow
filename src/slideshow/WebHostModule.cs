@@ -36,6 +36,7 @@ namespace slideshow
             this.Bind<IFeatureToggleProvider>().To<UnleashFeaturToggleProvider>().InSingletonScope();
 
             this.Bind<IDistributedCache>().To<DistributedCache>();
+            this.Bind<IBackupProvider>().To<BackupProvider>();
         }
 
         private class WebHostService : IService
