@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Ninject;
 using Ninject.Activation;
 using Ninject.Infrastructure.Disposal;
+using slideshow.core;
 using slideshow.core.Repository;
 using System;
 using System.Linq;
@@ -88,7 +89,7 @@ namespace slideshow
 
             services.AddTransient<ISectionRepository>(provider => kernel.Get<ISectionRepository>());
             services.AddTransient<ISlideRepository>(provider => kernel.Get<ISlideRepository>());
-
+            services.AddSingleton<IFeatureToggleProvider>(provider => kernel.Get<IFeatureToggleProvider>());
             //return services.BuildServiceProvider();
         }
 

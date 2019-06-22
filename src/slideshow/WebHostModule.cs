@@ -32,6 +32,8 @@ namespace slideshow
                 .InSingletonScope()
                 .WithConstructorArgument("host", host);
 
+            this.Bind<IFeatureToggleProvider>().To<UnleashFeaturToggleProvider>().InSingletonScope();
+
         }
 
         private class WebHostService : IService
