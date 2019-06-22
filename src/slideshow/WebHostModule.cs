@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.DependencyInjection;
 using Ninject.Modules;
 using slideshow.core;
@@ -34,6 +35,7 @@ namespace slideshow
 
             this.Bind<IFeatureToggleProvider>().To<UnleashFeaturToggleProvider>().InSingletonScope();
 
+            this.Bind<IDistributedCache>().To<DistributedCache>();
         }
 
         private class WebHostService : IService
