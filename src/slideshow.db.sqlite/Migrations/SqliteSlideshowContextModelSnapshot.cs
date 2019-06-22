@@ -66,7 +66,7 @@ namespace slideshow.db.sqlite.Migrations
 
                     b.Property<string>("Header")
                         .IsRequired()
-                        .HasMaxLength(20);
+                        .HasMaxLength(100);
 
                     b.Property<string>("Name")
                         .IsRequired()
