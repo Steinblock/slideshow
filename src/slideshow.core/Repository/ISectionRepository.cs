@@ -16,5 +16,6 @@ namespace slideshow.core.Repository
         Task<ISection> GetSectionAsync(int id);
         IQueryable<ISlide> GetSlides(ISection section);
         void DeleteSection(ISection section);
+        void AddSection(ISection section);
     }
 }

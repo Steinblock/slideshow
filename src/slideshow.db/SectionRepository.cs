@@ -2,6 +2,7 @@
 using slideshow.core.Models;
 using slideshow.core.Repository;
 using slideshow.data.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -43,6 +44,12 @@ namespace slideshow.db
         public IQueryable<ISlide> GetSlides(ISection section)
         {
             return context.Slides.Where(x => x.Section == section).OrderBy(x => x.Order);
+        }
+
+        public void AddSection(ISection section)
+        {
+            var _section = section as Section ?? throw new NotSupportedException();
+            context.Sections.Add(_section);
         }
     }
 }
