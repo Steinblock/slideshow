@@ -20,10 +20,10 @@
     </div>
     @if (User.IsInRole("admin"))
     {
-        <div class="col-md-4">
+        <div class="col-md-2">
             <form method="post">
-                <input type="hidden" name="name" v alue="app">
-                <input class="btn btn-danger" type="submit" name="action" value="Crash me">
+                <input type="hidden" name="name" value="app">
+                <input class="btn btn-danger btn-block" type="submit" name="action" value="Crash me">
             </form>
         </div>
     }
@@ -63,18 +63,18 @@
         <div class="col-md-4">
             <h4>@service.Status</h4>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-2">
             @if (User.IsInRole("admin"))
             {
                 <form method="post">
                     <input type="hidden" name="name" value="@service.Name" />
                     @if (service.Status == ServiceStatus.Running)
                     {
-                        <input class="btn btn-info" name="action" type="submit" value="Stop">
+                        <input class="btn btn-info btn-block" name="action" type="submit" value="Stop">
                     }
                     else if (service.Status == ServiceStatus.Stopped)
                     {
-                        <input class="btn btn-info" name="action" type="submit" value="Start">
+                        <input class="btn btn-info btn-block" name="action" type="submit" value="Start">
                     }
                 </form>
             }
@@ -92,15 +92,15 @@
             <div class="col-md-4">
                 <input type="file" name="file">
             </div>
-            <div class="col-md-4">
-                <input class="btn btn-default" type="submit" name="action" value="Restore">
+            <div class="col-md-2">
+                <input class="btn btn-default btn-block" type="submit" name="action" value="Restore">
             </div>
         </form>
 
         <form method="post" action="~/status/backup">
 
-            <div class="col-md-4">
-                <input class="btn btn-info" type="submit" name="action" value="Backup">
+            <div class="col-md-2 col-md-offset-2">
+                <input class="btn btn-info btn-block" type="submit" name="action" value="Backup">
             </div>
         </form>
 
@@ -114,7 +114,7 @@
     @foreach (var target in Enum.GetValues(typeof(EnvironmentVariableTarget)).OfType<EnvironmentVariableTarget>().Reverse())
     {
         <h3>@target</h3>
-        @foreach (DictionaryEntry envvar in Environment.GetEnvironmentVariables(target))
+        @foreach (var envvar in Environment.GetEnvironmentVariables(target).OfType<DictionaryEntry>().OrderBy(x => x.Key))
         {
             <div class="row status-content">
                 <div class="col-md-6 text-right">
