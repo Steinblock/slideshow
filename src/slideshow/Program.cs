@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Ninject;
+using Sentry;
 using slideshow.db;
 using System;
 using System.Linq;
@@ -19,58 +20,61 @@ namespace slideshow
     {
         public static void Main(string[] args)
         {
-
-            var kernel = new StandardKernel(new WebHostModule(args));
-            //kernel.Load("slideshow.*.dll");
-            kernel.Load("slideshow.data.dll");
-            kernel.Load("slideshow.db.dll");
-
-            if ((Environment.GetEnvironmentVariable("DATABASE_URL") ?? String.Empty).StartsWith("postgres"))
+            using (SentrySdk.Init("https://67eb60e7372c4ab78eec333390b63c31@sentry.io/1488570"))
             {
-                kernel.Load("slideshow.db.postgres.dll");
-            }
-            else
-            {
-                kernel.Load("slideshow.db.sqlite.dll");
-            }
+                var kernel = new StandardKernel(new WebHostModule(args));
+                //kernel.Load("slideshow.*.dll");
+                kernel.Load("slideshow.data.dll");
+                kernel.Load("slideshow.db.dll");
 
-            kernel.Load("slideshow.scheduler.dll");
-            kernel.Load("slideshow.web.dll");
-
-            if (args.Any(x => x == "--migrate"))
-            {
-                Console.WriteLine("Try migrate database");
-                var context = kernel.Get<SlideshowContext>();
-                context.Database.Migrate();
-                Console.WriteLine("Done");
-                Environment.Exit(0);
-            }
-
-            var host = HostFactory.New(x =>
-            {
-
-                x.UseEnvironmentBuilder(c => new DotNetCoreEnvironmentBuilder(c));
-
-                x.UseNinject(kernel.GetModules().ToArray());
-
-                x.Service<ServiceManager>(s =>
+                if ((Environment.GetEnvironmentVariable("DATABASE_URL") ?? String.Empty).StartsWith("postgres"))
                 {
-                    s.ConstructUsing(serviceFactory => kernel.Get<ServiceManager>());
-                    s.WhenStarted(async tc => await tc.StartAsync());
-                    s.WhenStopped(async tc => await tc.StopAsync());
+                    kernel.Load("slideshow.db.postgres.dll");
+                }
+                else
+                {
+                    kernel.Load("slideshow.db.sqlite.dll");
+                }
+
+                kernel.Load("slideshow.scheduler.dll");
+                kernel.Load("slideshow.web.dll");
+
+                if (args.Any(x => x == "--migrate"))
+                {
+                    Console.WriteLine("Try migrate database");
+                    var context = kernel.Get<SlideshowContext>();
+                    context.Database.Migrate();
+                    Console.WriteLine("Done");
+                    Environment.Exit(0);
+                }
+
+                var host = HostFactory.New(x =>
+                {
+
+                    x.UseEnvironmentBuilder(c => new DotNetCoreEnvironmentBuilder(c));
+
+                    x.UseNinject(kernel.GetModules().ToArray());
+
+                    x.Service<ServiceManager>(s =>
+                    {
+                        s.ConstructUsing(serviceFactory => kernel.Get<ServiceManager>());
+                        s.WhenStarted(async tc => await tc.StartAsync());
+                        s.WhenStopped(async tc => await tc.StopAsync());
+                    });
+
+                    x.RunAsLocalSystem();
+
+                    x.SetDescription("Slideshow Web Application");
+                    x.SetDisplayName("Slideshow App");
+                    x.SetServiceName("SlideshowApp");
+
                 });
 
-                x.RunAsLocalSystem();
+                var rc = host.Run();
 
-                x.SetDescription("Slideshow Web Application");
-                x.SetDisplayName("Slideshow App");
-                x.SetServiceName("SlideshowApp");
+                Environment.ExitCode = (int)Convert.ChangeType(rc, rc.GetTypeCode());
 
-            });
-
-            var rc = host.Run();
-
-            Environment.ExitCode = (int)Convert.ChangeType(rc, rc.GetTypeCode());
+            }
         }
 
     }

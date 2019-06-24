@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Ninject.Modules;
+using Sentry.Protocol;
 using slideshow.core;
 using System;
 using System.IO;
@@ -25,7 +27,20 @@ namespace slideshow
             var builder = WebHost.CreateDefaultBuilder(args)
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .ConfigureServices(configure => configure.AddSingleton(this.Kernel))
-                .UseStartup<Startup>();
+                .UseStartup<Startup>()
+                .UseSentry(options =>
+                {
+                    // https://docs.sentry.io/platforms/dotnet/aspnetcore/
+                    // dsn is configured only for production via K8S_SECRET_sentry__Dsn
+                    // options.Dsn = "...";
+                    options.MaxRequestBodySize = Sentry.Extensibility.RequestSize.Always;
+                    options.SendDefaultPii = true;
+                    options.MinimumBreadcrumbLevel = LogLevel.Debug;
+                    options.MinimumEventLevel = LogLevel.Warning;
+                    options.AttachStacktrace = true;
+                    options.Debug = true;
+                    options.DiagnosticsLevel = SentryLevel.Error;
+                });
 
             var host = builder.Build();
 
