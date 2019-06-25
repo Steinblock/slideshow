@@ -6,10 +6,19 @@
     ViewData["Title"] = "Status";
 }
 
-<a href="~/status">
-    <h2>@ViewData["Title"]</h2>
-    <h3>@ViewData["Message"]</h3>
-</a>
+@*<a href="~/status">
+        <h2>@ViewData["Title"]</h2>
+        <h3>@ViewData["Message"]</h3>
+    </a>*@
+
+<div class="row status-content">
+    <div class="col-md-4 col-md-offset-4">
+        <a href="~/status">
+            <h2>@ViewData["Title"]</h2>
+            <h3>@ViewData["Message"]</h3>
+        </a>
+    </div>
+</div>
 
 <div class="row status-content">
     <div class="col-md-4 text-right">
@@ -110,18 +119,35 @@
 
 @if (User.IsInRole("admin"))
 {
+    <hr />
     <h2>Environment Variables</h2>
     @foreach (var target in Enum.GetValues(typeof(EnvironmentVariableTarget)).OfType<EnvironmentVariableTarget>().Reverse())
     {
-        <h3>@target</h3>
+
+        <div class="row status-content">
+            <div class="col-md-4 text-right">
+                <h3>@target</h3>
+            </div>
+        </div>
+
         @foreach (var envvar in Environment.GetEnvironmentVariables(target).OfType<DictionaryEntry>().OrderBy(x => x.Key))
         {
             <div class="row status-content">
                 <div class="col-md-6 text-right">
                     @envvar.Key
                 </div>
-                <div class="col-md-6">
-                    @envvar.Value
+                <div class="col-md-6" style="word-break: break-word;">
+                    @if (envvar.Value.ToString().Contains(";"))
+                    {
+                        @foreach (var entry in envvar.Value.ToString().Split(';').Where(x => !String.IsNullOrWhiteSpace(x)))
+                        {
+                            @entry<br />
+                        }
+                    }
+                    else
+                    {
+                        @envvar.Value
+                    }
                 </div>
             </div>
         }

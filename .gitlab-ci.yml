@@ -71,6 +71,7 @@ variables:
   # https://docs.gitlab.com/ee/topics/autodevops/#migrations
   # DB_MIGRATE: dotnet ef database update --project src/slideshow.db.postgres --startup-project src/slideshow --context PostgresSlideshowContext
   DB_MIGRATE: dotnet slideshow.dll --migrate
+  DB_INITIALIZE: dotnet slideshow.dll --migrate
 
 stages:
   - build

@@ -1,11 +1,12 @@
 ﻿using slideshow.core.Models;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace slideshow.data.Models
 {
     public class Slide : ISlide
     {
-        [Key]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int SlideId { get; set; }
         [Required, StringLength(20, MinimumLength = 3)]
         public string Name { get; set; }

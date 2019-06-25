@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures.Internal;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Ninject;
 using Ninject.Activation;
 using Ninject.Infrastructure.Disposal;
@@ -115,12 +116,21 @@ namespace slideshow
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseBrowserLink();
             }
             else
             {
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+
+            app.UseStatusCodePagesWithReExecute("/Home/Error", "?statusCode={0}");
+
+
+            //app.UseStatusCodePages(options =>
+            //{
+            //    options.
+            //});
 
             if ((Environment.GetEnvironmentVariable("ASPNETCORE_HTTPS_REDIRECTION_ENABLED") ?? "true") == "true")
             {
@@ -162,6 +172,7 @@ namespace slideshow
 
             //kernel.Bind<IDistributedCache>().To<DistributedCache>();
 
+            kernel.Bind<ILoggerFactory>().To<LoggerFactory>().InSingletonScope();
 
             return kernel;
         }

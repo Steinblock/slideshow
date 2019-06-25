@@ -66,6 +66,7 @@ body {
     -webkit-transition: all 0.1s ease-in-out;
     -moz-transition: all 0.1s ease-in-out;
     transition: all 0.1s ease-in-out;
+    position: fixed;
 }
 
     .navbar-primary.collapsed {
@@ -105,6 +106,11 @@ body {
 
 
 /* https://codepen.io/nirmalkc/pen/JKjmVg */
+.navbar-primary-menu {
+    overflow: auto;
+    height: 95%;
+}
+
 .navbar-primary-menu,
 .navbar-primary-menu li {
     margin: 0;
@@ -160,10 +166,26 @@ body {
 pre {
     overflow-x: auto;
     white-space: pre-wrap;
+    padding: unset;
+    border-radius: 6px;
 }
 
 .slideshow-content {
     font-size: large;  
 }
 
-    
+img {
+    max-width: 90%;
+}
+
+@media (min-width: 992px)  {
+    .container {
+        width: 950px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 950px;
+    }
+}

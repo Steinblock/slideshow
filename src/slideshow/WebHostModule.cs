@@ -28,6 +28,10 @@ namespace slideshow
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .ConfigureServices(configure => configure.AddSingleton(this.Kernel))
                 .UseStartup<Startup>()
+                .ConfigureLogging(config =>
+                {
+                    //config.
+                })
                 .UseSentry(options =>
                 {
                     // https://docs.sentry.io/platforms/dotnet/aspnetcore/
@@ -52,6 +56,7 @@ namespace slideshow
 
             this.Bind<IDistributedCache>().To<DistributedCache>();
             this.Bind<IBackupProvider>().To<BackupProvider>();
+
         }
 
         private class WebHostService : IService

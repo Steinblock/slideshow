@@ -1,6 +1,7 @@
 ﻿using slideshow.core.Models;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
 namespace slideshow.data.Models
@@ -8,7 +9,7 @@ namespace slideshow.data.Models
 
     public class Section : ISection
     {
-        [Key]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int SectionId { get; set; }
         [Required, StringLength(20, MinimumLength = 3)]
         public string Name { get; set; }
