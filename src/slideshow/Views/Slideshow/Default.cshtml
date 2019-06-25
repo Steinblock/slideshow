@@ -3,22 +3,26 @@
     ViewData["Title"] = Model.Header;
 }
 
+@section Title {
+    @Model.SectionName | @Model.Header
+}
+
 @*<partial name="_Nav" />*@
 <div class="row slideshow-content">
-    <div class="col-md-12">
-        <h1 style="text-align: center">
-            @Model.Header
-        </h1>
-    </div>
-    <div class="col-md-12">
-        <hr />
-    </div>
-    <div class="col-md-8 col-md-offset-2">
+    @*<div class="col-md-12">
+            <h1 style="text-align: center">
+                @Model.Header
+            </h1>
+        </div>
+        <div class="col-md-12">
+            <hr />
+        </div>*@
+    <div class="col-md-10 col-md-offset-2">
         <p>
             @Html.Raw(Model.Content)
         </p>
     </div>
 </div>
 
-<partial name="_Navigation" />
+@*<partial name="_Navigation" />*@
 

@@ -197,6 +197,7 @@ namespace slideshow.web.Controllers
                 Content = slide.Content,
                 Order = slide.Order,
                 SectionId = slide.SectionId,
+                SectionName = slide.Section?.Name,
             };
         }
 
@@ -210,6 +211,8 @@ namespace slideshow.web.Controllers
                 Template = slide.Template,
                 Content = slide.Content,
                 Order = slide.Order,
+                SectionId = slide.SectionId,
+                SectionName = slide.Section?.Name,
                 Prev = prev != null ? CreateSlideViewModel(prev) : null,
                 Next = next != null ? CreateSlideViewModel(next) : null,
             };

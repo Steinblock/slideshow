@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using slideshow.core.Repository;
 using slideshow.web.Models;
 using System;
@@ -11,10 +12,12 @@ namespace slideshow.web.Controllers
     public class HomeController : Controller
     {
         private readonly ISectionRepository repo;
+        private readonly ILoggerFactory loggerFactory;
 
-        public HomeController(ISectionRepository repo)
+        public HomeController(ISectionRepository repo, ILoggerFactory loggerFactory)
         {
             this.repo = repo;
+            this.loggerFactory = loggerFactory;
         }
 
         public IActionResult Index()
@@ -23,7 +26,7 @@ namespace slideshow.web.Controllers
 
             var sb = new StringBuilder();
             sb.AppendLine("<h2>Jürgen Steinblock</h2>")
-                .AppendLine($"<h3>{DateTime.Now:g}</h3>")
+                .AppendLine($"<h3>{DateTime.Now:d}</h3>")
                 .AppendLine();
 
             if (section != null)
@@ -64,9 +67,36 @@ namespace slideshow.web.Controllers
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Error(int? statusCode = null)
         {
+            if (statusCode.HasValue)
+            {
+                var logger = loggerFactory.CreateLogger<HomeController>();
+                if (statusCode.Value >= 400 && statusCode.Value < 500)
+                {
+                    logger.LogWarning("StatusCode {0}", statusCode);
+                }
+                else if (statusCode.Value >= 500 && statusCode.Value < 600)
+                {
+                    logger.LogError("StatusCode {0}", statusCode);
+                }
+            }
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        //public IActionResult Error(int? statusCode = null)
+        //{
+        //    if (statusCode.HasValue)
+        //    {
+        //        if (statusCode.Value == 404 || statusCode.Value == 500)
+        //        {
+        //            var viewName = statusCode.ToString();
+        //            return View(viewName);
+        //        }
+        //    }
+        //    return View();
+        //}
+
     }
 }

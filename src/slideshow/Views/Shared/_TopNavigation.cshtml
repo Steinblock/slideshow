@@ -1,0 +1,25 @@
+﻿@model SlideViewModelWithNavigation
+
+@if (User.IsInRole("admin") && Model.Id > 0)
+{
+    <li><a href="./edit/@Model.Id"><span class="glyphicon glyphicon-pencil"></span></a></li>
+}
+
+@if (Model.Prev != null)
+{
+    <li><a href="~/section/@Model.Prev.SectionId/slide/@Model.Prev.Id"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+}
+else
+{
+    <li><a href="#"><span class="glyphicon glyphicon-chevron-left" style="color: grey"></span></a></li>
+}
+
+@if (Model.Next != null)
+{
+    <li><a href="~/section/@Model.Next.SectionId/slide/@Model.Next.Id"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+}
+else
+{
+    <li><a href="#"><span class="glyphicon glyphicon-chevron-right" style="color: grey"></span></a></li>
+}
+

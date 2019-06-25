@@ -32,6 +32,7 @@ namespace slideshow.db
         {
             return await this.context
                 .Slides
+                .Include(x => x.Section)
                 .Where(x => x.SlideId == id)
                 .SingleOrDefaultAsync();
         }
