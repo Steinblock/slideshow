@@ -4,7 +4,7 @@
 }
 
 @section Title {
-    @Model.SectionName | @Model.Header
+    @(String.IsNullOrEmpty(Model.SectionName) ? "" : Model.SectionName + " | ") @Model.Header
 }
 
 @*<partial name="_Nav" />*@

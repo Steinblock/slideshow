@@ -26,7 +26,8 @@ namespace slideshow.web.Controllers
 
             var sb = new StringBuilder();
             sb.AppendLine("<h2>Jürgen Steinblock</h2>")
-                .AppendLine($"<h3>{DateTime.Now:d}</h3>")
+                .AppendLine("<h3>Vortrag zum Thema DevOps in der Praxis</h3>")
+                .AppendLine($"<h4>24.04.2019 und 26.06.2019</h4>")
                 .AppendLine();
 
             if (section != null)
