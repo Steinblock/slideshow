@@ -5,10 +5,10 @@ image: microsoft/dotnet:latest
 tasks:
   - init: export ASPNETCORE_HTTPS_REDIRECTION_ENABLED=false
   - command: dotnet run --project src/slideshow/slideshow.csproj
-  - command: dotnet test /p:CollectCoverage=true
+  # - command: dotnet test /p:CollectCoverage=true
 # Ports to expose on workspace startup (optional)
 ports:
   - port: 5000
-    onOpen: open-preview
+    onOpen: open-browser
   - port: 5001
     onOpen: ignore
