@@ -23,7 +23,7 @@ or (to just see a live version of the slideshow) ...
 or run with docker
 
 ```bash
-docker run -p 5000:5000 registry.gitlab.com/j-steinblock/slideshow:latest
+docker run -it -p 5000:5000 registry.gitlab.com/j-steinblock/slideshow:latest
 ```
 
 ## Features
