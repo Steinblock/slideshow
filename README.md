@@ -13,10 +13,12 @@ Jürgen Steinblock - 2019
 	* `USERMANAGER_ADMIN_HASH=...`
 * run tests with `dotnet test /p:CollectCoverage=true`
 
-or...
+or (to just see a live version of the slideshow) ...
 
-* run project with [gitpod.io](https://gitpod.io/#https://github.com/Steinblock/slideshow)
+* [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#snapshot/6b6501b7-f9dd-40b1-b100-e0fdc088cf66) and wait for build to complete. Application will open on the side.
+* gitpod requires a github account.
 * gitpod is a [theia](https://www.theia-ide.org/) based web IDE, that brings the VSCode experience to the cloud. See [gitpod features](https://www.gitpod.io/features)
+* see `.gitpod.yml` for building and testing the app
 
 ## Features
 
