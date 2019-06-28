@@ -1,6 +1,8 @@
-# Slideshow
+# Real World DevOps
 
-Example Project for .NET Usergroup Rhein/Ruhr
+This project was build as a techdemo for a DevOps talk held at the .NET Usergroup Rhein/Ruhr
+
+The project itself contains the slides as a bootstrap based web application.
 
 Jürgen Steinblock - 2019
 
@@ -72,7 +74,7 @@ slideshow.exe start
     }
     ```
 
-### Entity Framework Core Datenbank
+### Entity Framework Core
 
 * Supports SQLite and Postgresql (default SQLite)
 * For Postgres, set environment variable `DATABASE_URL`: `DATABASE_URL=postgres://postgres:postgres@localhost:5432/slideshow`
