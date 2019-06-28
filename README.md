@@ -20,6 +20,12 @@ or (to just see a live version of the slideshow) ...
 * gitpod is a [theia](https://www.theia-ide.org/) based web IDE, that brings the VSCode experience to the cloud. See [gitpod features](https://www.gitpod.io/features)
 * see `.gitpod.yml` for building and testing the app
 
+or run with docker
+
+```bash
+docker run -p 5000:5000 registry.gitlab.com/j-steinblock/slideshow:latest
+```
+
 ## Features
 
 ### ASP.NET Core MVC WebApplication
