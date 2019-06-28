@@ -6,7 +6,7 @@ using System.Net;
 
 namespace slideshow
 {
-    public class UnleashFeaturToggleProvider : IFeatureToggleProvider
+    public class UnleashFeatureToggleProvider : IFeatureToggleProvider
     {
         //private readonly DefaultUnleash unleash;
         private readonly string appName;
@@ -15,7 +15,7 @@ namespace slideshow
         private DateTime lastUpdate = DateTime.MinValue;
         private readonly IDictionary<string, bool> features = new Dictionary<string, bool>();
 
-        public UnleashFeaturToggleProvider()
+        public UnleashFeatureToggleProvider(string apiUrl, string instanceId)
         {
             var environment = "production";
             if (Environment.GetEnvironmentVariable("KUBERNETES_PORT") != null)

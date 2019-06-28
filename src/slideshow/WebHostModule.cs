@@ -31,8 +31,11 @@ namespace slideshow
                 .ConfigureLogging(config =>
                 {
                     //config.
-                })
-                .UseSentry(options =>
+                });
+
+            if (Environment.GetEnvironmentVariable("sentry__Dsn") != null)
+            {
+                builder.UseSentry(options =>
                 {
                     // https://docs.sentry.io/platforms/dotnet/aspnetcore/
                     // dsn is configured only for production via K8S_SECRET_sentry__Dsn
@@ -45,6 +48,7 @@ namespace slideshow
                     options.Debug = true;
                     options.DiagnosticsLevel = SentryLevel.Error;
                 });
+            }
 
             var host = builder.Build();
 
@@ -52,7 +56,21 @@ namespace slideshow
                 .InSingletonScope()
                 .WithConstructorArgument("host", host);
 
-            this.Bind<IFeatureToggleProvider>().To<UnleashFeaturToggleProvider>().InSingletonScope();
+            if (Environment.GetEnvironmentVariable("UNLEASH_API_URL") != null &&
+                Environment.GetEnvironmentVariable("UNLEASH_INSTANCE_ID") != null
+            )
+            {
+                this.Bind<IFeatureToggleProvider>()
+                    .To<UnleashFeatureToggleProvider>()
+                    .InSingletonScope()
+                    .WithConstructorArgument("apiUrl", Environment.GetEnvironmentVariable("UNLEASH_API_URL"))
+                    .WithConstructorArgument("instanceId", Environment.GetEnvironmentVariable("UNLEASH_INSTANCE_ID"));
+            }
+            else
+            {
+                this.Bind<IFeatureToggleProvider>().To<FakeFeatureToggleProvider>();
+            }
+            
 
             this.Bind<IDistributedCache>().To<DistributedCache>();
             this.Bind<IBackupProvider>().To<BackupProvider>();
@@ -108,6 +126,13 @@ namespace slideshow
 
         }
 
+        private class FakeFeatureToggleProvider : IFeatureToggleProvider
+        {
+            public bool IsEnabled(string feature)
+            {
+                return true;
+            }
+        }
     }
 
 }
