@@ -126,12 +126,12 @@ namespace slideshow
 
             app.UseStatusCodePagesWithReExecute("/Home/Error", "?statusCode={0}");
             
-            //if ((Environment.GetEnvironmentVariable("ASPNETCORE_HTTPS_REDIRECTION_ENABLED") ?? "true") == "true")
-            //{
-            //    // https redirection does not work with gitpod
-            //    // allow disable it
-            //    app.UseHttpsRedirection();
-            //}
+            if ((Environment.GetEnvironmentVariable("ASPNETCORE_HTTPS_REDIRECTION_ENABLED") ?? "true") == "true")
+            {
+                // https redirection does not work with gitpod
+                // allow disable it
+                app.UseHttpsRedirection();
+            }
 
             app.UseStaticFiles();
             app.UseCookiePolicy();
