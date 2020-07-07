@@ -130,7 +130,7 @@ namespace slideshow
             {
                 // https redirection does not work with gitpod
                 // allow disable it
-                app.UseHttpsRedirection();
+                // app.UseHttpsRedirection();
             }
 
             app.UseStaticFiles();
